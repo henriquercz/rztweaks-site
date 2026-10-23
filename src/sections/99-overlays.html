@@ -1,0 +1,27 @@
+<div class="order-bar" id="orderBar" hidden aria-live="polite">
+    <p class="order-summary"><span id="orderCount">0 serviços</span> · <strong id="orderTotal">R$ 0,00</strong></p>
+    <div class="order-actions">
+      <button class="order-clear" id="orderClear" type="button">Limpar</button>
+      <a class="btn btn-primary" id="copyOrder" href="https://discord.gg/ugcU6gtnnj" target="_blank" rel="noopener noreferrer">Copiar pedido e abrir Discord</a>
+    </div>
+  </div>
+
+  <dialog class="lightbox" id="lightbox" aria-labelledby="lightboxCaption">
+    <div class="lightbox-bar">
+      <p id="lightboxCaption">Print de feedback</p>
+      <button class="lightbox-close" id="lightboxClose" type="button">Fechar</button>
+    </div>
+    <div class="lightbox-stage">
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button" aria-label="Print anterior">←</button>
+      <img id="lightboxImage" src="" alt="">
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Próximo print">→</button>
+    </div>
+  </dialog>
+
+  <div class="order-fallback" id="orderFallback" hidden>
+    <div class="order-fallback-inner">
+      <p>Copie o pedido abaixo e cole no Discord.</p>
+      <textarea id="orderText" rows="6" readonly></textarea>
+      <button class="btn btn-primary" id="orderFallbackClose" type="button">Fechar</button>
+    </div>
+  </div>

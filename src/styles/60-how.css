@@ -1,0 +1,118 @@
+/* 60-how — quatro passos, sem cartão e sem número */
+
+.how-head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gap);
+  align-items: end;
+}
+.how-head .head { grid-column: 1 / span 6; }
+.how-intro {
+  grid-column: 8 / -1;
+  max-width: 38ch;
+  font-size: var(--t-body);
+  line-height: 1.5;
+}
+
+/* A grade é o desenho: quatro colunas de texto, separadas só pelo vão.
+   As notas descem até a mesma linha de base, como anotações de um roteiro. */
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--gap);
+  margin-top: clamp(56px, 7vw, 96px);
+  padding: 0;
+  list-style: none;
+}
+.how-step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.how-step h3 {
+  font-size: var(--t-lead);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+.how-step p:not(.how-note) {
+  margin-top: calc(var(--gap) / 2);
+  max-width: 34ch;
+  font-size: var(--t-body);
+  color: var(--ink-soft);
+}
+.how-note {
+  margin-top: auto;
+  padding-top: clamp(18px, 2vw, 28px);
+  font-weight: 600;
+}
+
+/* O único bloco preenchido da seção: o contrato de quem atende. */
+.how-promise {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gap);
+  align-items: end;
+  margin-top: clamp(64px, 8vw, 120px);
+  padding: clamp(32px, 5.5vw, 88px);
+  background: var(--paper);
+}
+.promise-list {
+  grid-column: 1 / span 7;
+  display: grid;
+  row-gap: calc(var(--gap) * 0.75);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.promise-list li {
+  max-width: 30ch;
+  font-size: var(--t-lead);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+.promise-note {
+  grid-column: 9 / -1;
+  max-width: 26ch;
+  justify-self: end;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+.how-step[data-reveal] { transition-delay: var(--delay, 0ms); }
+.how-intro[data-reveal] { transition-delay: 70ms; }
+
+@media (max-width: 1100px) {
+  .how-head {
+    grid-template-columns: 1fr;
+    row-gap: var(--gap);
+  }
+  .how-head .head,
+  .how-intro { grid-column: auto; }
+
+  .how-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: clamp(40px, 6vw, 64px);
+  }
+
+  .how-promise {
+    grid-template-columns: 1fr;
+    row-gap: var(--gap);
+  }
+  .promise-list,
+  .promise-note { grid-column: auto; }
+  .promise-note {
+    justify-self: start;
+    max-width: 40ch;
+    margin-top: calc(var(--gap) * 1.25);
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .how-steps { grid-template-columns: 1fr; }
+  .how-promise { padding: clamp(28px, 8vw, 40px); }
+  .promise-list { row-gap: var(--gap); }
+}

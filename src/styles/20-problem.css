@@ -1,0 +1,54 @@
+/* 20-problem — o respiro da página: uma coluna estreita deslocada, o resto vazio. */
+
+.problem {
+  padding-block: var(--section-y);
+}
+
+.problem-column {
+  width: clamp(21rem, 24vw, 22.5rem);
+  margin-left: calc(13vw - var(--gutter));
+}
+
+.problem-title {
+  font-size: var(--t-lead);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.problem-body {
+  margin-top: clamp(56px, 7vw, 96px);
+}
+
+.problem-body p {
+  color: var(--ink-soft);
+}
+
+.problem-body p + p {
+  margin-top: 1.1em;
+}
+
+.problem-body .problem-lead {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.problem-link {
+  margin-top: clamp(28px, 3vw, 44px);
+  color: var(--ink-soft);
+}
+
+@media (max-width: 720px) {
+  .problem {
+    padding-block: 72px 96px;
+  }
+
+  .problem-column {
+    width: 78vw;
+    margin-left: 0;
+  }
+
+  .problem-body {
+    margin-top: 48px;
+  }
+}

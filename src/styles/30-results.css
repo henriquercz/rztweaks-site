@@ -1,0 +1,153 @@
+/* 30-results — a parede de provas */
+
+.results-head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gap);
+  align-items: start;
+}
+.results-head .head { grid-column: 1 / span 7; }
+.results-note {
+  grid-column: 8 / -1;
+  max-width: 52ch;
+  font-size: var(--t-body);
+  line-height: 1.5;
+}
+
+/* Duas leituras, sem card: o número de agora carrega a linha. */
+.readings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--gap);
+  margin-top: calc(var(--section-y) / 2);
+}
+.proof-stat { min-width: 0; }
+.reading {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+.reading-from {
+  font-size: var(--t-head);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--on-dark-soft);
+}
+.reading-arrow {
+  margin: 0 0.16em;
+  font-size: var(--t-head);
+  font-weight: 500;
+  color: var(--on-dark-soft);
+}
+.reading-to {
+  font-size: var(--t-display);
+  letter-spacing: -0.05em;
+}
+.reading-meta { margin-top: var(--gap); }
+.reading-source {
+  margin-top: 4px;
+  color: var(--on-dark-soft);
+}
+
+.proof-quote {
+  margin-top: calc(var(--section-y) / 2);
+  margin-left: calc(50% + var(--gap) / 2);
+  max-width: calc(50% - var(--gap) / 2);
+}
+.proof-quote p {
+  font-size: var(--t-lead);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+.proof-quote cite {
+  display: block;
+  margin-top: calc(var(--gap) / 2);
+  font-style: normal;
+  color: var(--on-dark-soft);
+}
+
+/* Parede: as provas são a imagem, não um card em volta dela.
+   Colunas CSS: ordem do DOM preservada, alturas naturais, sem JS. */
+.results .wrap { container-type: inline-size; }
+.proof-wall {
+  margin-top: clamp(56px, 7vw, 96px);
+  columns: 4;
+  column-gap: 8px;
+}
+.proof-item {
+  display: block;
+  width: 100%;
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.proof-item img {
+  width: 100%;
+  height: auto;
+  filter: brightness(0.9);
+  transition: filter 0.3s var(--ease);
+}
+.proof-item:hover img,
+.proof-item:focus-visible img { filter: brightness(1); }
+
+.results-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap);
+  margin-top: var(--gap);
+}
+.more-proof {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.results-disclaimer {
+  max-width: 44ch;
+  color: var(--on-dark-soft);
+  text-align: right;
+}
+
+/* O script.js escalona .proof-stat e .proof-quote por --delay. */
+.proof-stat[data-reveal],
+.proof-quote[data-reveal] { transition-delay: var(--delay, 0ms); }
+
+@media (max-width: 1000px) {
+  .proof-wall { columns: 3; }
+}
+
+@media (max-width: 800px) {
+  .results-head { grid-template-columns: 1fr; row-gap: var(--gap); }
+  .results-head .head,
+  .results-note { grid-column: auto; }
+}
+
+@media (max-width: 720px) {
+  .readings {
+    grid-template-columns: 1fr;
+    row-gap: calc(var(--section-y) / 2);
+  }
+  .proof-quote {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .proof-wall { columns: 2; }
+  .results-foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .results-disclaimer { text-align: left; }
+}
