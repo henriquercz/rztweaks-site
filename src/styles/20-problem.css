@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--gap);
-  align-items: start;
+  align-items: end;
 }
 
 .problem-title {
@@ -19,25 +19,28 @@
   letter-spacing: -0.055em;
 }
 
+.problem-title-part {
+  display: inline;
+}
+
+.problem-title-part + .problem-title-part::before {
+  content: " ";
+}
+
 .problem-title-accent {
+  display: block;
   color: var(--accent);
 }
 
 .problem-intro {
   grid-column: 9 / -1;
-  padding-top: 0.35em;
+  padding-bottom: 0.12em;
 }
 
 .problem-lead {
   max-width: 30ch;
-  font-size: clamp(1.125rem, 1.1vw + 0.7rem, 1.375rem);
+  font-size: clamp(1.25rem, 1.1vw + 0.7rem, 1.375rem);
   line-height: 1.32;
-}
-
-.problem-note {
-  max-width: 30ch;
-  margin-top: 12px;
-  color: var(--muted);
 }
 
 /* Sintomas: quatro células, duas regras horizontais. Sem card. */
@@ -45,12 +48,12 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: clamp(40px, 6vw, 96px);
-  margin-top: clamp(56px, 7vw, 96px);
+  margin-top: clamp(48px, 5.5vw, 80px);
 }
 
 .symptom {
   min-width: 0;
-  padding-block: clamp(22px, 2.4vw, 32px);
+  padding-block: clamp(20px, 2vw, 28px);
   border-top: 1px solid var(--line);
 }
 
@@ -68,7 +71,7 @@
 
 .symptom-title {
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+  font-size: clamp(1.375rem, 1.6vw, 1.5rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -77,11 +80,10 @@
 
 .symptom-tag {
   flex: none;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   line-height: 1;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
+  letter-spacing: 0.02em;
+  color: var(--text-2);
 }
 
 .symptom-text {
@@ -92,57 +94,42 @@
   line-height: 1.5;
 }
 
-/* Faixa: cinco frentes em colunas separadas por linha. */
+/* Faixa: cinco frentes sob uma régua, sem caixa e sem divisórias verticais. */
 .problem-band {
-  margin-top: clamp(64px, 8vw, 112px);
+  margin-top: clamp(48px, 5.5vw, 80px);
 }
 
 .problem-band-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: clamp(18px, 2vw, 26px);
+  margin-bottom: clamp(20px, 2.2vw, 28px);
 }
 
 .problem-band-title {
   font-family: var(--font-display);
-  font-size: clamp(1.375rem, 1.8vw, 1.625rem);
+  font-size: clamp(1.625rem, 1.4vw + 1rem, 1.75rem);
   line-height: 1.1;
   letter-spacing: -0.03em;
   font-weight: 700;
   font-stretch: 102%;
 }
 
-.problem-link {
-  flex: none;
-  font-size: var(--t-small);
-}
-
 .problem-checks {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
+  column-gap: clamp(20px, 3vw, 48px);
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--line-strong);
-  border-bottom: 1px solid var(--line);
 }
 
 .problem-checks li {
   min-width: 0;
-  padding: 18px clamp(14px, 1.5vw, 24px) 20px;
-  border-left: 1px solid var(--line);
-}
-
-.problem-checks li:first-child {
-  padding-left: 0;
-  border-left: 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
 }
 
 .check-name {
   display: block;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -150,11 +137,46 @@
 
 .check-text {
   display: block;
-  max-width: 24ch;
-  margin-top: 7px;
-  font-size: 0.8125rem;
-  line-height: 1.45;
+  max-width: 26ch;
+  margin-top: 8px;
+  font-size: 0.875rem;
+  line-height: 1.5;
   color: var(--muted);
+}
+
+.problem-band-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px 24px;
+  margin-top: clamp(18px, 2vw, 24px);
+}
+
+.problem-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 40ch;
+  color: var(--text-2);
+}
+
+.problem-note::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  background: var(--accent);
+}
+
+.problem-link {
+  margin-left: auto;
+  font-size: 0.9375rem;
+}
+
+.problem-link:hover {
+  color: var(--accent-2);
+  text-decoration-color: var(--accent-2);
 }
 
 @media (max-width: 1000px) {
@@ -169,11 +191,10 @@
   }
 
   .problem-intro {
-    padding-top: 0;
+    padding-bottom: 0;
   }
 
-  .problem-lead,
-  .problem-note {
+  .problem-lead {
     max-width: 52ch;
   }
 }
@@ -181,17 +202,7 @@
 @media (max-width: 900px) {
   .problem-checks {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .problem-checks li {
-    border-left: 0;
-    border-top: 1px solid var(--line);
-    padding-left: 0;
-    padding-right: 24px;
-  }
-
-  .problem-checks li:nth-child(-n + 2) {
-    border-top: 0;
+    column-gap: clamp(24px, 4vw, 40px);
   }
 
   .problem-checks li:last-child {
@@ -224,9 +235,12 @@
     line-height: 0.96;
   }
 
-  .problem-band-head {
-    flex-wrap: wrap;
-    gap: 10px 20px;
+  .problem-title-part {
+    display: block;
+  }
+
+  .problem-title-part + .problem-title-part::before {
+    content: none;
   }
 }
 
@@ -236,11 +250,14 @@
   }
 
   .problem-checks li {
-    border-top: 1px solid var(--line);
-    padding-block: 16px;
+    padding-top: 16px;
   }
 
-  .problem-checks li:first-child {
-    border-top: 0;
+  .problem-checks li + li {
+    margin-top: 4px;
+  }
+
+  .problem-checks li:last-child {
+    grid-column: auto;
   }
 }

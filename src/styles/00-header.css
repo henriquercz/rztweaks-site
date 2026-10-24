@@ -138,6 +138,24 @@
   transform: scaleX(1);
 }
 
+/* No topo o hero é o contexto. O observer de seções pode deixar um link antigo ativo. */
+.site-header:not(.is-scrolled) .nav a.is-active {
+  color: var(--text-2);
+}
+
+.site-header:not(.is-scrolled) .nav a.is-active:hover {
+  color: var(--text);
+}
+
+.site-header:not(.is-scrolled) .nav a.is-active::after {
+  transform: scaleX(0);
+}
+
+.site-header:not(.is-scrolled) .nav a.is-active:hover::after {
+  background: var(--line-strong);
+  transform: scaleX(1);
+}
+
 /* Ações ------------------------------------------------------------------ */
 
 .site-header .header-actions {
@@ -162,8 +180,11 @@
   flex: none;
 }
 
-.site-header .header-discord:hover {
-  background: var(--accent-2);
+/* Hover mais escuro: branco sobre --accent-2 fica em 3,5:1. */
+.site-header .header-discord:hover,
+.site-header .mobile-discord:hover {
+  background: var(--accent);
+  background: color-mix(in srgb, var(--accent) 84%, var(--black));
 }
 
 .site-header .header-discord:active {
@@ -179,6 +200,7 @@
   gap: 10px;
   height: 44px;
   min-height: 44px;
+  min-width: 6.5rem; /* "Menu" e "Fechar" têm larguras diferentes; trava a barra. */
   padding: 0 12px;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
@@ -200,7 +222,7 @@
 .site-header .menu-toggle[aria-expanded="true"] {
   border-color: var(--accent);
   background: var(--accent);
-  color: var(--black);
+  color: var(--accent-ink);
 }
 
 .site-header .menu-label-close {
@@ -237,17 +259,20 @@
 }
 
 .site-header .mobile-menu {
+  position: absolute;
+  top: calc(100% + 1px);
+  right: 0;
+  left: 0;
   max-height: calc(100dvh - var(--header-h));
   overflow-y: auto;
   overscroll-behavior: contain;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
-  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+  transition: transform 0.22s var(--ease);
 }
 
 @starting-style {
   .site-header .mobile-menu:not([hidden]) {
-    opacity: 0;
     transform: translateY(-8px);
   }
 }
