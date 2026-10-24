@@ -1,86 +1,89 @@
-<section class="section field-paper services" id="servicos" aria-labelledby="services-title">
-      <div class="wrap">
-        <header class="services-head">
-          <h2 class="head" id="services-title" data-reveal>Serviços e preços</h2>
-          <p class="services-intro" data-reveal>Escolha um ajuste ou o pacote; o escopo e o horário são combinados no Discord antes do atendimento.</p>
-        </header>
-        <ul class="service-list">
-          <li class="service" data-service="fps" data-reveal>
-            <div class="service-copy">
+    <section class="section field-base services" id="servicos" aria-labelledby="services-title">
+      <div class="wrap services-grid">
+        <div class="services-aside" data-stagger>
+          <h2 class="head services-title" id="services-title" data-reveal>Serviços e preços</h2>
+
+          <p class="lead services-intro" data-reveal>Cinco ajustes para o que trava o jogo. O escopo é confirmado no Discord antes do atendimento.</p>
+
+          <div class="services-builder" data-reveal>
+            <p class="services-builder-label mono">Montador de pedido</p>
+            <p class="services-builder-text">Marque os serviços. O total aparece na barra inferior.</p>
+            <p class="services-builder-text">Copie o pedido e abra o Discord.</p>
+          </div>
+
+          <p class="services-package-note small" data-reveal><strong>Pacote completo: R$&nbsp;50</strong> pelos quatro primeiros serviços. O ajuste de BIOS fica fora.</p>
+        </div>
+
+        <div class="services-main">
+          <div class="service-list-head mono" aria-hidden="true" data-reveal>
+            <span>Serviço</span>
+            <span>Preço</span>
+            <span>Pedido</span>
+          </div>
+
+          <ul class="service-list" data-stagger>
+            <li class="service" data-service="fps" data-reveal>
               <h3 class="service-name" id="service-fps-name">FPS &amp; input lag</h3>
-              <p class="service-desc">Para quedas de FPS, stutter e mouse pesado.</p>
-            </div>
-            <ul class="service-includes small">
-              <li>Aumento de FPS</li>
-              <li>Redução de input lag</li>
-              <li>Otimização de GPU/CPU</li>
-            </ul>
-            <div class="service-buy">
-              <p class="service-price">R$&nbsp;37,50</p>
-              <button class="btn btn-dark service-add" type="button" data-add="fps" aria-pressed="false" aria-describedby="service-fps-name">Adicionar</button>
-            </div>
-          </li>
-          <li class="service" data-service="limpeza" data-reveal>
-            <div class="service-copy">
+              <p class="service-desc">Reduz quedas de FPS, stutter e o atraso do mouse no jogo.</p>
+              <p class="service-price num">R$&nbsp;37,50</p>
+              <button class="service-add" type="button" data-add="fps" aria-pressed="false" aria-describedby="service-fps-name">Adicionar</button>
+              <ul class="service-includes small">
+                <li>Aumento de FPS</li>
+                <li>Redução de input lag</li>
+                <li>Otimização de GPU/CPU</li>
+              </ul>
+            </li>
+
+            <li class="service" data-service="limpeza" data-reveal>
               <h3 class="service-name" id="service-limpeza-name">Limpeza do Windows</h3>
-              <p class="service-desc">Para um Windows cheio de apps e processos.</p>
-            </div>
-            <ul class="service-includes small">
-              <li>Remoção de bloatware</li>
-              <li>Limpeza de registro</li>
-              <li>Remoção de apps desnecessários</li>
-            </ul>
-            <div class="service-buy">
-              <p class="service-price">R$&nbsp;10,00</p>
-              <button class="btn btn-dark service-add" type="button" data-add="limpeza" aria-pressed="false" aria-describedby="service-limpeza-name">Adicionar</button>
-            </div>
-          </li>
-          <li class="service" data-service="internet" data-reveal>
-            <div class="service-copy">
+              <p class="service-desc">Remove apps, serviços e tarefas que sobem sem uso e disputam CPU, disco e memória.</p>
+              <p class="service-price num">R$&nbsp;10,00</p>
+              <button class="service-add" type="button" data-add="limpeza" aria-pressed="false" aria-describedby="service-limpeza-name">Adicionar</button>
+              <ul class="service-includes small">
+                <li>Remoção de bloatware</li>
+                <li>Limpeza de registro</li>
+                <li>Remoção de apps desnecessários</li>
+              </ul>
+            </li>
+
+            <li class="service" data-service="internet" data-reveal>
               <h3 class="service-name" id="service-internet-name">Otimização de internet</h3>
-              <p class="service-desc">Para ping alto e conexão instável.</p>
-            </div>
-            <ul class="service-includes small">
-              <li>Redução de ping</li>
-              <li>Estabilidade de conexão</li>
-              <li>DNS otimizado</li>
-            </ul>
-            <div class="service-buy">
-              <p class="service-price">R$&nbsp;7,00</p>
-              <button class="btn btn-dark service-add" type="button" data-add="internet" aria-pressed="false" aria-describedby="service-internet-name">Adicionar</button>
-            </div>
-          </li>
-          <li class="service" data-service="formatacao" data-reveal>
-            <div class="service-copy">
+              <p class="service-desc">Ajusta DNS e a configuração de rede para estabilizar o ping e a conexão.</p>
+              <p class="service-price num">R$&nbsp;7,00</p>
+              <button class="service-add" type="button" data-add="internet" aria-pressed="false" aria-describedby="service-internet-name">Adicionar</button>
+              <ul class="service-includes small">
+                <li>Redução de ping</li>
+                <li>Estabilidade de conexão</li>
+                <li>DNS otimizado</li>
+              </ul>
+            </li>
+
+            <li class="service" data-service="formatacao" data-reveal>
               <h3 class="service-name" id="service-formatacao-name">Formatação</h3>
-              <p class="service-desc">Para começar do zero, sem lixo acumulado.</p>
-            </div>
-            <ul class="service-includes small">
-              <li>Formatação completa</li>
-              <li>Instalação do Windows</li>
-              <li>Configuração inicial</li>
-            </ul>
-            <div class="service-buy">
-              <p class="service-price">R$&nbsp;7,00</p>
-              <button class="btn btn-dark service-add" type="button" data-add="formatacao" aria-pressed="false" aria-describedby="service-formatacao-name">Adicionar</button>
-            </div>
-          </li>
-          <li class="service" data-service="bios" data-reveal>
-            <div class="service-copy">
+              <p class="service-desc">Windows limpo e configuração inicial, sem os apps que vieram de fábrica.</p>
+              <p class="service-price num">R$&nbsp;7,00</p>
+              <button class="service-add" type="button" data-add="formatacao" aria-pressed="false" aria-describedby="service-formatacao-name">Adicionar</button>
+              <ul class="service-includes small">
+                <li>Formatação completa</li>
+                <li>Instalação do Windows</li>
+                <li>Configuração inicial</li>
+              </ul>
+            </li>
+
+            <li class="service service-bios" data-service="bios" data-reveal>
               <h3 class="service-name" id="service-bios-name">Ajuste de BIOS</h3>
-              <p class="service-desc">Para liberar o hardware e ganhar consistência.</p>
-            </div>
-            <ul class="service-includes small">
-              <li>Liberação de desempenho</li>
-              <li>Melhora da vida útil</li>
-              <li>Ajustes ocultos</li>
-            </ul>
-            <div class="service-buy">
-              <p class="service-price">R$&nbsp;45,00</p>
-              <button class="btn btn-dark service-add" type="button" data-add="bios" aria-pressed="false" aria-describedby="service-bios-name">Adicionar</button>
-            </div>
-          </li>
-        </ul>
-        <p class="services-note small" data-reveal>Preços em reais. O escopo é confirmado antes do atendimento.</p>
+              <p class="service-desc">Ajusta a BIOS para o hardware entregar desempenho consistente. Só é feito quando placa e memória são compatíveis.</p>
+              <p class="service-price num">R$&nbsp;45,00</p>
+              <button class="service-add" type="button" data-add="bios" aria-pressed="false" aria-describedby="service-bios-name">Adicionar</button>
+              <ul class="service-includes small">
+                <li>Liberação de desempenho</li>
+                <li>Estabilidade do sistema</li>
+                <li>Ajustes ocultos</li>
+              </ul>
+            </li>
+          </ul>
+
+          <p class="services-note small">Preços em reais. O escopo é confirmado antes de qualquer alteração.</p>
+        </div>
       </div>
     </section>
