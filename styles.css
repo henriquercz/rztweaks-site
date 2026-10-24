@@ -793,13 +793,45 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 }
 
 /* ===== 10-hero ===== */
-/* 10-hero — a leitura de performance ocupa a primeira dobra. */
+/* 10-hero — autoridade, prova concreta e telemetria de alta performance. */
 
 .hero {
-  padding-block: clamp(32px, 4vw, 56px) clamp(64px, 8vw, 112px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(32px, 4vw, 52px) clamp(56px, 7vw, 96px);
+  background: var(--bg);
+}
+
+/* Fundo com atmosfera visual sutil da marca. */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 80% 25%;
+  opacity: 0.14;
+  filter: grayscale(100%) contrast(1.15);
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 75% 25%, transparent 0%, var(--bg) 72%),
+    linear-gradient(180deg, var(--bg) 0%, transparent 22%, transparent 70%, var(--bg) 100%);
 }
 
 .hero-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--gap);
@@ -814,14 +846,60 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   min-width: 0;
 }
 
+/* Micro-badge de contexto técnico. */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(16px, 2vw, 24px);
+  padding: 6px 12px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--text-2);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  background: var(--accent);
+}
+
+.hero-badge-text {
+  font-weight: 500;
+}
+
 .hero-title {
-  font-size: clamp(3.4rem, 8.4vw, 7.6rem);
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(3.2rem, 7.6vw, 6.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.hero-title-line {
+  display: block;
+}
+
+.hero-title-accent {
+  display: block;
+  margin-top: 0.16em;
+  color: var(--accent);
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: 700;
 }
 
 .hero-lead {
-  max-width: 34ch;
-  margin-top: clamp(20px, 2.4vw, 32px);
+  max-width: 44ch;
+  margin-top: clamp(20px, 2.4vw, 28px);
   color: var(--text-2);
+  font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
+  line-height: 1.45;
 }
 
 .hero-actions {
@@ -829,7 +907,7 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   align-items: center;
   flex-wrap: wrap;
   gap: 14px 28px;
-  margin-top: clamp(28px, 3.2vw, 40px);
+  margin-top: clamp(26px, 3vw, 36px);
 }
 
 .hero-cta {
@@ -845,34 +923,61 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   font-size: 0.9375rem;
 }
 
-.hero-note {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: clamp(32px, 4vw, 56px);
-  color: var(--text-2);
+/* Pilares de segurança e confiança comercial. */
+.hero-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 20px);
+  width: 100%;
+  margin: clamp(36px, 4.2vw, 52px) 0 0;
+  padding: clamp(18px, 2vw, 24px) 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
 }
 
-.hero-note-mark {
+.hero-pillar {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.hero-pillar-mark {
   width: 6px;
   height: 6px;
   flex: none;
+  margin-top: 6px;
   background: var(--accent);
 }
 
-.hero-note-count {
-  color: var(--text);
-  font-weight: 600;
+.hero-pillar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
 }
 
-/* Painel: moldura de instrumento, sem sombra e sem card decorativo. */
+.hero-pillar-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.hero-pillar-desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+/* Painel: moldura de instrumento e telemetria de performance. */
 .hero-panel {
   grid-column: 8 / 13;
   display: flex;
   flex-direction: column;
   min-width: 0;
-  min-height: clamp(540px, 42vw, 600px);
+  min-height: clamp(540px, 42vw, 620px);
   border: 1px solid var(--line-strong);
   background: var(--black);
   overflow: hidden;
@@ -930,6 +1035,30 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   object-position: 50% 46%;
 }
 
+.hero-screen-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgba(8, 8, 10, 0.88);
+  border: 1px solid var(--line-strong);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.screen-tag-live {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
 /* Leitura: números tabulares, rótulos curtos, linhas de 1px. */
 .hero-readout {
   flex: none;
@@ -947,11 +1076,17 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   border-top: 1px solid var(--line);
 }
 
+.hero-reading-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .hero-reading-meta {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   line-height: 1.3;
@@ -965,6 +1100,16 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 
 .hero-player {
   color: var(--muted);
+}
+
+.hero-tag-diff {
+  padding: 2px 6px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  letter-spacing: 0.02em;
 }
 
 .hero-reading-value {
@@ -1005,13 +1150,32 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 }
 
 .hero-readout-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   padding: 8px 16px 9px;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.625rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   line-height: 1;
   text-transform: uppercase;
+}
+
+.hero-badge-verified {
+  color: var(--text-2);
+  font-weight: 600;
+}
+
+@media (max-width: 1080px) {
+  .hero-pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-pillar:last-child {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1023,11 +1187,6 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   .hero-copy,
   .hero-panel {
     grid-column: 1 / -1;
-  }
-
-  .hero-note {
-    margin-top: 0;
-    padding-top: 24px;
   }
 
   .hero-panel {
@@ -1042,24 +1201,39 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 
 @media (max-width: 640px) {
   .hero {
-    padding-block: 24px 56px;
+    padding-block: 24px 52px;
   }
 
   .hero-grid {
-    row-gap: 32px;
+    row-gap: 28px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.6rem, 11vw, 3.6rem);
+  }
+
+  .hero-title-accent {
+    font-size: clamp(1.25rem, 5.5vw, 1.75rem);
   }
 
   .hero-lead {
-    margin-top: 18px;
+    margin-top: 16px;
   }
 
   .hero-actions {
-    margin-top: 24px;
+    margin-top: 22px;
     gap: 14px 20px;
   }
 
-  .hero-note {
+  .hero-pillars {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 28px;
     padding-top: 18px;
+  }
+
+  .hero-pillar:last-child {
+    grid-column: auto;
   }
 
   .hero-panel-top {
@@ -1075,7 +1249,7 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 
   .hero-reading-value {
     gap: 8px;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
 
   .hero-reading-arrow {

@@ -84,42 +84,87 @@
 
   <main id="conteudo">
 <section class="hero field-base" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true">
+        <picture>
+          <source srcset="assets/brand/v2/hero-wallpaper-1200.webp" media="(max-width: 900px)">
+          <img src="assets/brand/v2/hero-wallpaper-2400.webp" width="2400" height="1350" alt="" fetchpriority="high" decoding="async">
+        </picture>
+        <div class="hero-bg-overlay"></div>
+      </div>
+
       <div class="wrap hero-grid" data-stagger>
         <div class="hero-copy">
-          <h1 class="display hero-title" id="hero-title" data-hero>Mais FPS.<br>Menos lag.</h1>
+          <div class="hero-badge mono" data-hero>
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            <span class="hero-badge-text">Otimização Competitiva · Windows 10 &amp; 11</span>
+          </div>
 
-          <p class="lead hero-lead" data-hero>Otimização de Windows para o seu jogo. Atendimento remoto e acompanhado pelo Discord.</p>
+          <h1 class="display hero-title" id="hero-title" data-hero>
+            <span class="hero-title-line">Mais FPS.</span>
+            <span class="hero-title-line">Menos lag.</span>
+            <span class="hero-title-accent">No teto do seu hardware.</span>
+          </h1>
+
+          <p class="lead hero-lead" data-hero>
+            Eliminamos processos invisíveis, atraso no mouse e oscilações de frametime. Otimização cirúrgica e segura para o seu jogo, feita à distância enquanto você acompanha no Discord.
+          </p>
 
           <div class="hero-actions" data-hero>
             <a class="btn hero-cta" href="#servicos">
               <span>Montar meu pacote</span>
               <svg class="hero-cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75"/></svg>
             </a>
-            <a class="link hero-link" href="#resultados">Ver resultados</a>
+            <a class="link hero-link" href="#resultados">Ver 25 resultados reais</a>
           </div>
 
-          <p class="small hero-note" data-hero>
-            <span class="hero-note-mark" aria-hidden="true"></span>
-            <span><strong class="hero-note-count">25</strong> prints de clientes no Discord</span>
-          </p>
+          <ul class="hero-pillars" data-hero role="list">
+            <li class="hero-pillar">
+              <span class="hero-pillar-mark" aria-hidden="true"></span>
+              <div class="hero-pillar-content">
+                <strong class="hero-pillar-title">Ponto de restauração</strong>
+                <span class="hero-pillar-desc">Criado antes de qualquer alteração</span>
+              </div>
+            </li>
+            <li class="hero-pillar">
+              <span class="hero-pillar-mark" aria-hidden="true"></span>
+              <div class="hero-pillar-content">
+                <strong class="hero-pillar-title">Zero delay &amp; 1% lows</strong>
+                <span class="hero-pillar-desc">Fim das travadas em combate</span>
+              </div>
+            </li>
+            <li class="hero-pillar">
+              <span class="hero-pillar-mark" aria-hidden="true"></span>
+              <div class="hero-pillar-content">
+                <strong class="hero-pillar-title">100% seguro</strong>
+                <span class="hero-pillar-desc">Sem risco de ban e sem abrir arquivos</span>
+              </div>
+            </li>
+          </ul>
         </div>
 
-        <aside class="hero-panel" data-hero aria-label="Leituras de FPS antes e depois, enviadas por clientes no Discord">
+        <aside class="hero-panel" data-hero aria-label="Telemetria de FPS antes e depois enviada por clientes no Discord">
           <div class="hero-panel-top" data-ui>
-            <p class="hero-panel-label"><span class="hero-status" aria-hidden="true"></span>FPS em partida</p>
-            <p class="hero-panel-count">2 leituras</p>
+            <p class="hero-panel-label"><span class="hero-status" aria-hidden="true"></span>Telemetria real</p>
+            <p class="hero-panel-count">25 prints no Discord</p>
           </div>
 
           <div class="hero-screen">
             <img src="assets/brand/v2/hero-panel-1000.webp" width="1000" height="1267" alt="Painel da RZ Tweaks com o logotipo RZ em vermelho sobre fundo escuro." fetchpriority="high" decoding="async">
+            <div class="hero-screen-tag mono" data-ui>
+              <span class="screen-tag-live" aria-hidden="true"></span>
+              <span>1 a 1 no Discord</span>
+            </div>
           </div>
 
           <div class="hero-readout" data-ui role="group" aria-label="Leituras de FPS antes e depois">
             <div class="hero-reading">
-              <p class="hero-reading-meta">
-                <span class="hero-game">Fortnite</span>
-                <span class="hero-player">enzo gangstar</span>
-              </p>
+              <div class="hero-reading-head">
+                <p class="hero-reading-meta">
+                  <span class="hero-game">Fortnite</span>
+                  <span class="hero-player">enzo gangstar</span>
+                </p>
+                <span class="hero-tag-diff mono">+84% FPS</span>
+              </div>
               <p class="hero-reading-value">
                 <span class="hero-before num">130</span>
                 <span class="sr-only">para</span>
@@ -130,10 +175,13 @@
             </div>
 
             <div class="hero-reading">
-              <p class="hero-reading-meta">
-                <span class="hero-game">CS</span>
-                <span class="hero-player">drake</span>
-              </p>
+              <div class="hero-reading-head">
+                <p class="hero-reading-meta">
+                  <span class="hero-game">CS</span>
+                  <span class="hero-player">drake</span>
+                </p>
+                <span class="hero-tag-diff mono">+33% FPS</span>
+              </div>
               <p class="hero-reading-value">
                 <span class="hero-before num">150</span>
                 <span class="sr-only">para</span>
@@ -144,7 +192,10 @@
               </p>
             </div>
 
-            <p class="hero-readout-foot">Fonte / prints no Discord</p>
+            <div class="hero-readout-foot">
+              <span>Fonte: Prints reais com relato no servidor</span>
+              <span class="hero-badge-verified">Verificado</span>
+            </div>
           </div>
         </aside>
       </div>
