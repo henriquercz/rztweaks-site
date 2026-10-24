@@ -32,7 +32,49 @@
     });
   }
 
+  /* Header state + active nav */
+  const siteHeader = document.querySelector(".site-header");
+  const topSentinel = document.getElementById("topSentinel");
+  if (siteHeader && topSentinel && "IntersectionObserver" in window) {
+    const headerObserver = new IntersectionObserver(
+      ([entry]) => siteHeader.classList.toggle("is-scrolled", !entry.isIntersecting),
+      { threshold: 0 }
+    );
+    headerObserver.observe(topSentinel);
+  }
+
+  const navLinks = Array.from(document.querySelectorAll('.nav a[href^="#"]'));
+  if (navLinks.length && "IntersectionObserver" in window) {
+    const byId = new Map(navLinks.map((a) => [a.getAttribute("href").slice(1), a]));
+    const navSections = Array.from(byId.keys())
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    const setActive = (id) => {
+      navLinks.forEach((a) => {
+        const on = a.getAttribute("href") === `#${id}`;
+        a.classList.toggle("is-active", on);
+        if (on) a.setAttribute("aria-current", "location");
+        else a.removeAttribute("aria-current");
+      });
+    };
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: "-35% 0px -55% 0px", threshold: [0, 0.2, 0.5] }
+    );
+    navSections.forEach((section) => navObserver.observe(section));
+  }
+
   /* Stagger delays for groups */
+  document.querySelectorAll("[data-stagger]").forEach((group) => {
+    group.querySelectorAll("[data-reveal], [data-hero]").forEach((el, i) => {
+      el.style.setProperty("--delay", `${Math.min(i * 70, 350)}ms`);
+    });
+  });
   [".proof-stat", ".proof-quote", ".service", ".how-step", ".footer-tile"].forEach((sel) => {
     document.querySelectorAll(sel).forEach((el, i) => {
       el.style.setProperty("--delay", `${Math.min(i * 70, 280)}ms`);

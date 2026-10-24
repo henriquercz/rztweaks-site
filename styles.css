@@ -1,59 +1,130 @@
 /* ===== 00-base ===== */
 /* ==========================================================================
-   RZ Tweaks — base do sistema (travado)
-   Só este arquivo define cor, tamanho de texto, espaçamento e raio.
+   RZ Tweaks — base v2 (performance lab)
+   Só este arquivo define cor, tipo, espaço e forma.
    Seções usam os tokens. Nada de valor solto.
    ========================================================================== */
 
+/* Fontes self-hosted (latin + latin-ext) ------------------------------- */
+
 @font-face {
-  font-family: "Schibsted Grotesk";
-  src: url("assets/fonts/schibsted-grotesk-latin.woff2") format("woff2");
+  font-family: "Archivo";
+  src: url("assets/fonts/v2/archivo-latin-400-900.woff2") format("woff2");
   font-weight: 400 900;
+  font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: "Schibsted Grotesk";
-  src: url("assets/fonts/schibsted-grotesk-latin-ext.woff2") format("woff2");
+  font-family: "Archivo";
+  src: url("assets/fonts/v2/archivo-latin-ext-400-900.woff2") format("woff2");
   font-weight: 400 900;
+  font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("assets/fonts/v2/instrument-sans-latin-400-700.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("assets/fonts/v2/instrument-sans-latin-ext-400-700.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("assets/fonts/v2/ibm-plex-mono-latin-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("assets/fonts/v2/ibm-plex-mono-latin-ext-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("assets/fonts/v2/ibm-plex-mono-latin-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("assets/fonts/v2/ibm-plex-mono-latin-ext-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 :root {
-  /* Cor — um papel, um preto, um vermelho */
-  --paper: #f4f1ea;
-  --paper-2: #e8e3d8;
-  --paper-3: #dbd4c6;
-  --ink: #121316;
-  --ink-soft: #4a4b4f;
-  --muted: #73726d;
-  --dark: #0c0d0f;
-  --dark-2: #181a1d;
-  --on-dark: #f4f1ea;
-  --on-dark-soft: #a6a5a0;
-  --accent: #d92027;
+  /* Cor — um preto, um papel, um vermelho */
+  --bg: #08080a;
+  --bg-2: #0d0d10;
+  --bg-3: #141418;
+  --surface: #101014;
+  --surface-2: #18181d;
+  --line: rgba(244, 242, 239, 0.12);
+  --line-strong: rgba(244, 242, 239, 0.24);
+  --text: #f4f2ef;
+  --text-2: #c9c7c3;
+  --muted: #8f8d89;
+  --accent: #e02830;
+  --accent-2: #ff3b43;
   --accent-ink: #ffffff;
+  --black: #050506;
 
-  /* Tipo — cinco degraus, um por função */
-  --t-small: 0.875rem;
+  /* Aliases legados — não usar em código novo */
+  --paper: var(--bg);
+  --paper-2: var(--bg-2);
+  --paper-3: var(--bg-3);
+  --ink: var(--text);
+  --ink-soft: var(--text-2);
+  --dark: var(--black);
+  --dark-2: var(--bg-2);
+  --on-dark: var(--text);
+  --on-dark-soft: var(--muted);
+
+  /* Tipo */
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --t-small: 0.8125rem;
   --t-body: 1.0625rem;
-  --t-lead: clamp(1.375rem, 1.05rem + 1.1vw, 1.75rem);
-  --t-head: clamp(2rem, 1.2rem + 3.4vw, 4rem);
-  --t-display: clamp(3.25rem, 1.6rem + 7.4vw, 8.5rem);
+  --t-lead: clamp(1.25rem, 1.05rem + 0.8vw, 1.625rem);
+  --t-head: clamp(2.25rem, 1.4rem + 3.2vw, 4.5rem);
+  --t-display: clamp(3.5rem, 1.8rem + 7.2vw, 9rem);
+  --t-mega: clamp(5rem, 2rem + 14vw, 16rem);
 
   /* Espaço */
-  --gutter: clamp(20px, 4.2vw, 60px);
-  --section-y: clamp(88px, 10vw, 160px);
+  --gutter: clamp(20px, 4vw, 64px);
+  --section-y: clamp(96px, 10vw, 180px);
   --gap: clamp(16px, 2vw, 32px);
-  --measure: 62ch;
+  --measure: 64ch;
+  --header-h: 72px;
 
-  /* Forma — quadrado, decidido uma vez */
+  /* Forma */
   --radius: 0px;
-
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *,
@@ -62,19 +133,24 @@
 
 * { margin: 0; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
 
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
   font-size: var(--t-body);
   line-height: 1.55;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
 }
+
+body.has-order { padding-bottom: 96px; }
 
 img, svg, video { display: block; max-width: 100%; }
 img { height: auto; }
@@ -84,7 +160,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 a { color: inherit; text-decoration: none; }
 
 p { text-wrap: pretty; }
-h1, h2, h3, h4 { text-wrap: balance; font-weight: 700; }
+h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 
 ::selection { background: var(--accent); color: var(--accent-ink); }
 
@@ -104,46 +180,89 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 700; }
 
 .section { padding-block: var(--section-y); }
 
-/* Campos de cor — a seção troca o campo inteiro, nunca faz degrade */
-.field-paper { background: var(--paper); color: var(--ink); }
-.field-paper-2 { background: var(--paper-2); color: var(--ink); }
-.field-dark { background: var(--dark); color: var(--on-dark); }
-.field-accent { background: var(--accent); color: var(--accent-ink); }
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gap);
+}
 
-.field-dark ::selection,
-.field-accent ::selection { background: var(--on-dark); color: var(--dark); }
+/* Campos de cor — a seção troca o campo inteiro, nunca faz degrade */
+.field-base,
+.field-paper { background: var(--bg); color: var(--text); }
+
+.field-alt,
+.field-paper-2 { background: var(--bg-2); color: var(--text); }
+
+.field-raised,
+.field-paper-3 { background: var(--bg-3); color: var(--text); }
+
+.field-black,
+.field-dark { background: var(--black); color: var(--text); }
+
+.field-accent { background: var(--accent); color: var(--black); }
+
+.field-accent ::selection { background: var(--black); color: var(--accent); }
 
 /* Tipo ----------------------------------------------------------------- */
 
 .display {
+  font-family: var(--font-display);
   font-size: var(--t-display);
-  line-height: 0.9;
-  letter-spacing: -0.045em;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
   font-weight: 800;
+  font-stretch: 105%;
 }
 
 .head {
+  font-family: var(--font-display);
   font-size: var(--t-head);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
   font-weight: 800;
+  font-stretch: 102%;
+}
+
+.mega {
+  font-family: var(--font-display);
+  font-size: var(--t-mega);
+  line-height: 0.78;
+  letter-spacing: -0.06em;
+  font-weight: 800;
+  font-stretch: 110%;
 }
 
 .lead {
   font-size: var(--t-lead);
-  line-height: 1.25;
+  line-height: 1.28;
   letter-spacing: -0.02em;
   font-weight: 500;
 }
 
 .body { font-size: var(--t-body); line-height: 1.55; }
 .small { font-size: var(--t-small); line-height: 1.45; }
-
 .measure { max-width: var(--measure); }
-.soft { color: var(--ink-soft); }
-.field-dark .soft { color: var(--on-dark-soft); }
-
+.soft { color: var(--text-2); }
+.muted { color: var(--muted); }
 .num { font-variant-numeric: tabular-nums; }
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.kicker {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.rule { height: 1px; background: var(--line); border: 0; }
 
 /* Controles ------------------------------------------------------------ */
 
@@ -153,26 +272,35 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 700; }
   justify-content: center;
   gap: 10px;
   min-height: 52px;
-  padding: 0 26px;
-  border: 0;
+  padding: 0 24px;
+  border: 1px solid transparent;
   border-radius: var(--radius);
   background: var(--accent);
   color: var(--accent-ink);
-  font-size: var(--t-body);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.005em;
+  line-height: 1;
   cursor: pointer;
-  transition: transform 0.18s var(--ease), background-color 0.18s var(--ease);
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease), border-color 0.2s var(--ease);
 }
-.btn:hover { background: #bd1a20; }
-.btn:active { transform: translateY(1px) scale(0.995); }
+.btn:hover { background: var(--accent-2); }
+.btn:active { transform: translateY(1px); }
 .btn[disabled] { opacity: 0.45; cursor: not-allowed; }
 
-.btn-light { background: var(--paper); color: var(--ink); }
+.btn-light { background: var(--text); color: var(--black); }
 .btn-light:hover { background: #ffffff; }
 
-.btn-dark { background: var(--dark); color: var(--on-dark); }
-.btn-dark:hover { background: #000; }
+.btn-dark { background: var(--black); color: var(--text); }
+.btn-dark:hover { background: var(--bg-3); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+.btn-ghost:hover { background: var(--surface-2); border-color: var(--text-2); }
 
 .link {
   display: inline-flex;
@@ -181,16 +309,17 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 700; }
   font-weight: 600;
   color: inherit;
   text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 5px;
-  transition: color 0.18s var(--ease);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--line-strong);
+  transition: color 0.2s var(--ease), text-decoration-color 0.2s var(--ease);
 }
-.link:hover { color: var(--accent); }
+.link:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
 /* Interface do produto — dentro de [data-ui] valem as convenções do produto:
-   texto de 13–15px, linha de 1px, raio pequeno. Fora dele, valem as regras da casa. */
+   texto de 13–15px, linha de 1px, número tabular. Fora dele, valem as regras da casa. */
 [data-ui] {
-  font-size: var(--t-small);
+  font-size: 0.8125rem;
   line-height: 1.45;
 }
 [data-ui] .ui-row {
@@ -206,22 +335,57 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 700; }
 
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s var(--ease-out),
+    transform 0.8s var(--ease-out);
+  transition-delay: var(--delay, 0ms);
 }
 .js [data-reveal].is-visible { opacity: 1; transform: none; }
 
+.js [data-hero] {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: hero-in 0.9s var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes hero-in {
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .js [data-reveal],
+  .js [data-hero] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
 /* Utilidades ----------------------------------------------------------- */
+
+.top-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
 
 .skip {
   position: absolute;
@@ -229,8 +393,8 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 700; }
   top: 0;
   z-index: 100;
   padding: 14px 20px;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--text);
+  color: var(--black);
 }
 .skip:focus { left: 0; }
 
@@ -246,6 +410,11 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 700; }
 }
 
 [hidden] { display: none !important; }
+
+@media (max-width: 767px) {
+  :root { --header-h: 64px; }
+  .grid-12 { grid-template-columns: 1fr; }
+}
 
 /* ===== 00-header ===== */
 /* 00-header */
@@ -1117,6 +1286,9 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 700; }
     margin-top: clamp(32px, 6vw, 48px);
   }
 }
+
+/* ===== 50-package ===== */
+/* 50-package — preenchido pelo agente da seção. */
 
 /* ===== 60-how ===== */
 /* 60-how — quatro passos, sem cartão e sem número */

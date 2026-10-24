@@ -32,6 +32,7 @@ const styles = [
   "20-problem",
   "30-results",
   "40-services",
+  "50-package",
   "60-how",
   "70-faq",
   "80-cta",
