@@ -1,118 +1,292 @@
-/* 60-how — quatro passos, sem cartão e sem número */
+/* 60-how — contrato fixo à esquerda, processo em timeline à direita. */
 
-.how-head {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: var(--gap);
-  align-items: end;
-}
-.how-head .head { grid-column: 1 / span 6; }
-.how-intro {
-  grid-column: 8 / -1;
-  max-width: 38ch;
-  font-size: var(--t-body);
-  line-height: 1.5;
+.how {
+  background: var(--bg-2);
+  color: var(--text);
 }
 
-/* A grade é o desenho: quatro colunas de texto, separadas só pelo vão.
-   As notas descem até a mesma linha de base, como anotações de um roteiro. */
-.how-steps {
+.how-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--gap);
-  margin-top: clamp(56px, 7vw, 96px);
-  padding: 0;
-  list-style: none;
+  align-items: start;
 }
-.how-step {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+
+/* A coluna de contexto fica presa enquanto os quatro passos passam. */
+.how-aside {
+  grid-column: 1 / span 4;
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+  align-self: start;
   min-width: 0;
 }
-.how-step h3 {
-  font-size: var(--t-lead);
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-  font-weight: 700;
+
+.how-title {
+  max-width: 9ch;
+  font-size: clamp(2.75rem, 1.8rem + 3.2vw, 4.25rem);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
 }
-.how-step p:not(.how-note) {
-  margin-top: calc(var(--gap) / 2);
-  max-width: 34ch;
-  font-size: var(--t-body);
-  color: var(--ink-soft);
-}
-.how-note {
-  margin-top: auto;
-  padding-top: clamp(18px, 2vw, 28px);
-  font-weight: 600;
+
+.how-intro {
+  max-width: 32ch;
+  margin-top: clamp(20px, 2.4vw, 28px);
+  color: var(--text-2);
+  font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.25rem);
+  line-height: 1.45;
 }
 
 /* O único bloco preenchido da seção: o contrato de quem atende. */
 .how-promise {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: var(--gap);
-  align-items: end;
-  margin-top: clamp(64px, 8vw, 120px);
-  padding: clamp(32px, 5.5vw, 88px);
-  background: var(--paper);
+  margin-top: clamp(36px, 4.5vw, 56px);
+  padding: clamp(22px, 2.4vw, 32px);
+  background: var(--surface);
+  border: 1px solid var(--accent);
 }
+
+.promise-title {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+
 .promise-list {
-  grid-column: 1 / span 7;
   display: grid;
-  row-gap: calc(var(--gap) * 0.75);
-  margin: 0;
+  row-gap: clamp(16px, 1.8vw, 22px);
+  margin: clamp(18px, 2vw, 24px) 0 0;
   padding: 0;
   list-style: none;
 }
+
 .promise-list li {
-  max-width: 30ch;
-  font-size: var(--t-lead);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  display: grid;
+  grid-template-columns: 6px minmax(0, 1fr);
+  column-gap: 12px;
+}
+
+.promise-list li::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.42em;
+  background: var(--accent);
+}
+
+.promise-list strong {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  font-size: 0.9375rem;
+  line-height: 1.3;
   font-weight: 600;
+  color: var(--text);
 }
+
+.promise-list span {
+  grid-column: 2;
+  grid-row: 2;
+  display: block;
+  margin-top: 4px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
 .promise-note {
-  grid-column: 9 / -1;
-  max-width: 26ch;
-  justify-self: end;
-  color: var(--ink-soft);
-  text-align: right;
+  margin-top: clamp(20px, 2vw, 26px);
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
 }
 
-.how-step[data-reveal] { transition-delay: var(--delay, 0ms); }
-.how-intro[data-reveal] { transition-delay: 70ms; }
+/* Timeline: uma linha base e um trecho vermelho que cresce a cada passo. */
+.how-steps {
+  --how-pad: clamp(28px, 4vw, 52px);
+  position: relative;
+  grid-column: 6 / -1;
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 0 var(--how-pad);
+  list-style: none;
+}
 
-@media (max-width: 1100px) {
-  .how-head {
-    grid-template-columns: 1fr;
-    row-gap: var(--gap);
+.how-steps::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--line);
+}
+
+.how-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(60px, 7vw, 104px) minmax(0, 1fr);
+  column-gap: clamp(16px, 2.4vw, 36px);
+  align-items: start;
+  padding-bottom: clamp(56px, 7vw, 100px);
+}
+
+.how-step:last-child {
+  padding-bottom: 0;
+}
+
+/* O nó fica sobre a linha, na altura do número. */
+.how-step::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: calc(-1 * var(--how-pad) - 3px);
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+}
+
+/* O trecho vermelho desenha a linha conforme o passo entra na tela. */
+.how-step::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--how-pad));
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform 0.9s var(--ease-out);
+  transition-delay: calc(var(--delay, 0ms) + 90ms);
+}
+
+.js .how-step::after {
+  transform: scaleY(0);
+}
+
+.js .how-step.is-visible::after {
+  transform: scaleY(1);
+}
+
+.how-step-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 1.5rem + 2.4vw, 4.5rem);
+  line-height: 0.78;
+  letter-spacing: -0.06em;
+  font-weight: 800;
+  font-stretch: 78%;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.how-step-body {
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.how-step h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.1rem + 1.1vw, 2.125rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  font-stretch: 102%;
+  text-wrap: balance;
+}
+
+.how-step p:not(.how-step-note) {
+  max-width: 52ch;
+  margin-top: 12px;
+  color: var(--text-2);
+  font-size: var(--t-body);
+  line-height: 1.5;
+}
+
+.how-step-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  color: var(--muted);
+}
+
+.how-step-note::before {
+  content: "";
+  width: 14px;
+  height: 1px;
+  flex: none;
+  background: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .how-step::after {
+    transform: scaleY(1);
+    transition: none;
   }
-  .how-head .head,
-  .how-intro { grid-column: auto; }
+}
+
+@media (max-width: 1080px) {
+  .how-grid {
+    grid-template-columns: 1fr;
+    row-gap: clamp(48px, 7vw, 72px);
+  }
+
+  .how-aside {
+    position: static;
+    grid-column: auto;
+    max-width: 680px;
+  }
 
   .how-steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: clamp(40px, 6vw, 64px);
+    grid-column: auto;
   }
 
-  .how-promise {
-    grid-template-columns: 1fr;
-    row-gap: var(--gap);
-  }
-  .promise-list,
-  .promise-note { grid-column: auto; }
-  .promise-note {
-    justify-self: start;
-    max-width: 40ch;
-    margin-top: calc(var(--gap) * 1.25);
-    text-align: left;
+  .how-title {
+    max-width: 12ch;
   }
 }
 
 @media (max-width: 640px) {
-  .how-steps { grid-template-columns: 1fr; }
-  .how-promise { padding: clamp(28px, 8vw, 40px); }
-  .promise-list { row-gap: var(--gap); }
+  .how-title {
+    max-width: 9ch;
+    font-size: clamp(2.75rem, 10vw, 3.5rem);
+  }
+
+  .how-intro {
+    max-width: 40ch;
+  }
+
+  .how-promise {
+    padding: 22px 20px;
+  }
+
+  .how-steps {
+    --how-pad: 26px;
+  }
+
+  .how-step {
+    grid-template-columns: 52px minmax(0, 1fr);
+    column-gap: 14px;
+    padding-bottom: 40px;
+  }
+
+  .how-step::before {
+    top: 6px;
+  }
+
+  .how-step-num {
+    font-size: 2.75rem;
+  }
+
+  .how-step h3 {
+    font-size: 1.375rem;
+  }
+
+  .how-step p:not(.how-step-note) {
+    font-size: 1rem;
+  }
 }
