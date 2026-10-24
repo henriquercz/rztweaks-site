@@ -444,99 +444,73 @@
 <section class="section field-base services" id="servicos" aria-labelledby="services-title">
       <div class="wrap services-grid">
         <div class="services-aside" data-stagger>
-          <h2 class="head services-title" id="services-title" data-reveal>Serviços e preços</h2>
+          <h2 class="head services-title" id="services-title" data-reveal>Ajustes Avulsos</h2>
 
-          <p class="lead services-intro" data-reveal>Ajustes cirúrgicos para cada camada do seu sistema. Atendimento remoto e individual, acompanhado com você na chamada do Discord.</p>
+          <p class="lead services-intro" data-reveal>Escolha serviços pontuais para a sua necessidade ou selecione o pacote completo para a otimização total.</p>
 
           <div class="services-builder" data-reveal>
             <p class="services-builder-label mono">Montador de pedido</p>
-            <p class="services-builder-text">Marque os serviços avulsos ou selecione o Pacote Completo.</p>
-            <p class="services-builder-text">O valor atualiza em tempo real na barra inferior.</p>
+            <p class="services-builder-text">Marque os itens desejados. O total atualiza instantaneamente na barra inferior.</p>
           </div>
 
-          <div class="services-guarantee" data-reveal>
-            <p class="services-guarantee-label mono">Garantia técnica</p>
-            <p class="services-guarantee-text">Ponto de restauração criado antes de qualquer toque. Se não notar melhora, o sistema volta exatamente como estava.</p>
-          </div>
-
-          <p class="services-package-note small" data-reveal><strong>Mais escolhido: Pacote completo por R$&nbsp;50</strong> (inclui FPS, Limpeza, Internet e Formatação com economia de R$&nbsp;11,50). O ajuste de BIOS é contratado à parte.</p>
+          <p class="services-package-note small" data-reveal><strong>Dica:</strong> O Pacote Completo por R$&nbsp;50 inclui os quatro primeiros serviços e garante economia imediata de R$&nbsp;11,50.</p>
         </div>
 
         <div class="services-main">
           <div class="service-list-head mono" aria-hidden="true" data-reveal>
-            <span>Serviço &amp; Entregáveis</span>
-            <span>Preço</span>
-            <span>Pedido</span>
+            <span>Serviço</span>
+            <span>Valor</span>
+            <span>Seleção</span>
           </div>
 
           <ul class="service-list" data-stagger>
             <li class="service" data-service="fps" data-reveal>
-              <h3 class="service-name" id="service-fps-name">FPS &amp; input lag</h3>
-              <p class="service-desc">Calibração profunda de latência e hardware. Reduz o atraso de resposta do mouse, elimina engasgos (micro-stutters) e estabiliza as taxas de 1% low em partidas ranqueadas.</p>
+              <div class="service-info">
+                <h3 class="service-name" id="service-fps-name">Latência &amp; FPS</h3>
+                <p class="service-desc">Redução de atraso no mouse, fim dos micro-stutters e estabilização de 1% lows.</p>
+              </div>
               <p class="service-price num">R$&nbsp;37,50</p>
               <button class="service-add" type="button" data-add="fps" aria-pressed="false" aria-describedby="service-fps-name">Adicionar</button>
-              <ul class="service-includes small">
-                <li>Timer Resolution (QPC) &amp; Latência DPC</li>
-                <li>Prioridade de IRQ e afinidade de núcleos da CPU</li>
-                <li>Debloat e calibração de drivers NVIDIA/AMD</li>
-                <li>Desativação de mitigação e throttling do Windows</li>
-              </ul>
             </li>
 
             <li class="service" data-service="limpeza" data-reveal>
-              <h3 class="service-name" id="service-limpeza-name">Limpeza do Windows</h3>
-              <p class="service-desc">Remoção cirúrgica de bloatwares, rastreadores e serviços invasivos do sistema. Libera ciclos vitais de CPU, disco e memória RAM sem comprometer a estabilidade do Windows.</p>
+              <div class="service-info">
+                <h3 class="service-name" id="service-limpeza-name">Limpeza &amp; Debloat</h3>
+                <p class="service-desc">Desativação de telemetria, bloatwares e tarefas ocultas que consom CPU e RAM.</p>
+              </div>
               <p class="service-price num">R$&nbsp;10,00</p>
               <button class="service-add" type="button" data-add="limpeza" aria-pressed="false" aria-describedby="service-limpeza-name">Adicionar</button>
-              <ul class="service-includes small">
-                <li>Desativação de telemetria e rastreadores nativos</li>
-                <li>Remoção de serviços pesados (Game Bar, Cortana, Widgets)</li>
-                <li>Limpeza profunda de registros órfãos e arquivos de cache</li>
-                <li>Preservação da integridade do Windows Update</li>
-              </ul>
             </li>
 
             <li class="service" data-service="internet" data-reveal>
-              <h3 class="service-name" id="service-internet-name">Otimização de internet</h3>
-              <p class="service-desc">Ajuste na pilha de rede do Windows para reduzir oscilações de ping, eliminar perda de pacotes e estabilizar o tráfego UDP em jogos multiplayer.</p>
+              <div class="service-info">
+                <h3 class="service-name" id="service-internet-name">Calibração de Rede</h3>
+                <p class="service-desc">Otimização de rotas, TCP e desativação de throttling para estabilizar ping e packet loss.</p>
+              </div>
               <p class="service-price num">R$&nbsp;7,00</p>
               <button class="service-add" type="button" data-add="internet" aria-pressed="false" aria-describedby="service-internet-name">Adicionar</button>
-              <ul class="service-includes small">
-                <li>Configuração avançada de TCP/IP e TCP NoDelay</li>
-                <li>Desativação de Network Throttling Index do Windows</li>
-                <li>Ajuste de Bufferbloat e MTU para a sua conexão</li>
-                <li>DNS calibrado para rotas de servidores competitivos (SP)</li>
-              </ul>
             </li>
 
             <li class="service" data-service="formatacao" data-reveal>
-              <h3 class="service-name" id="service-formatacao-name">Formatação limpa</h3>
-              <p class="service-desc">Instalação pura do Windows 10 ou 11 desintoxicada para gaming. Sistema ágil e sem as dezenas de softwares promocionais que vêm de fábrica no PC.</p>
+              <div class="service-info">
+                <h3 class="service-name" id="service-formatacao-name">Formatação Limpa</h3>
+                <p class="service-desc">Instalação pura do Windows sem aplicativos de fábrica, com drivers essenciais configurados.</p>
+              </div>
               <p class="service-price num">R$&nbsp;7,00</p>
               <button class="service-add" type="button" data-add="formatacao" aria-pressed="false" aria-describedby="service-formatacao-name">Adicionar</button>
-              <ul class="service-includes small">
-                <li>Instalação pura do Windows 10/11 sem bloatwares</li>
-                <li>Instalação dos drivers mais recentes e estáveis</li>
-                <li>Configuração inicial de segurança e inicialização limpa</li>
-                <li>Ponto de restauração pós-formatação</li>
-              </ul>
             </li>
 
             <li class="service service-bios" data-service="bios" data-reveal>
-              <h3 class="service-name" id="service-bios-name">Ajuste fino de BIOS</h3>
-              <p class="service-desc">Configuração avançada na placa-mãe para extrair a velocidade máxima do hardware com estabilidade. Serviço individual e seguro, executado apenas em sistemas 100% compatíveis.</p>
+              <div class="service-info">
+                <h3 class="service-name" id="service-bios-name">Calibração de BIOS</h3>
+                <p class="service-desc">Ajuste de perfis XMP/DOCP, Resizable BAR e curvas térmicas para hardware compatível.</p>
+              </div>
               <p class="service-price num">R$&nbsp;45,00</p>
               <button class="service-add" type="button" data-add="bios" aria-pressed="false" aria-describedby="service-bios-name">Adicionar</button>
-              <ul class="service-includes small">
-                <li>Ativação de perfis XMP / DOCP / EXPO para memórias</li>
-                <li>Configuração de Resizable BAR para largura de GPU</li>
-                <li>Ajuste de curvas térmicas contra thermal throttling</li>
-                <li>Desativação de estados de economia instáveis (C-States)</li>
-              </ul>
             </li>
           </ul>
 
-          <p class="services-note small">Valores em Reais. O escopo exato é analisado com você no Discord antes de qualquer cobrança ou modificação.</p>
+          <p class="services-note small">Atendimento 1 a 1 via Discord com ponto de restauração criado antes de qualquer alteração.</p>
         </div>
       </div>
     </section>
@@ -547,66 +521,38 @@
         <header class="package-head" data-reveal>
           <div class="package-badge mono">
             <span class="package-badge-dot" aria-hidden="true"></span>
-            <span>Mais Escolhido · 85% dos Jogadores</span>
+            <span>Oferta Principal · Mais Escolhido</span>
           </div>
-          <h2 class="head package-title" id="package-title">Pacote Completo de Performance</h2>
+          <h2 class="head package-title" id="package-title">Setup Competitivo RZ</h2>
+          <p class="package-lead">A otimização definitiva do seu Windows. Os quatro serviços essenciais reunidos em um atendimento único, com acompanhamento ao vivo no Discord.</p>
         </header>
-
-        <div class="package-intro-col" data-reveal>
-          <p class="package-lead">A reformulação completa do seu sistema. Unimos FPS, Limpeza, Rede e Formatação em uma única sessão remota de alta precisão, com acompanhamento 1 a 1 ao vivo no Discord.</p>
-          <div class="package-specs-summary mono">
-            <span>Sessão de ~1h30</span> · <span>Antes &amp; Depois Medido</span> · <span>Ponto de Restauração</span>
-          </div>
-        </div>
 
         <div class="package-buy" data-reveal>
           <div class="package-price-row">
-            <p class="package-price display num" id="package-price"><span class="package-currency">R$&nbsp;</span><span class="package-amount">50</span></p>
+            <p class="package-price display num" id="package-price">
+              <span class="package-currency">R$&nbsp;</span><span class="package-amount">50</span>
+            </p>
             <div class="package-pricing-anchor">
-              <p class="package-anchor-old small">De <span class="num">R$&nbsp;61,50</span></p>
-              <p class="package-save"><span class="package-save-label">Economize</span> <strong class="package-save-value num">R$&nbsp;11,50</strong></p>
+              <span class="package-anchor-old num">De R$&nbsp;61,50</span>
+              <span class="package-save mono">Economia de R$&nbsp;11,50</span>
             </div>
           </div>
-          <p class="package-price-note">Valor único pelo atendimento completo dos 4 serviços inclusos.</p>
+          <p class="package-price-note">Valor único pelo atendimento completo dos 4 serviços.</p>
           <button class="btn package-add" type="button" data-add="completo" aria-pressed="false" aria-describedby="package-price">Adicionar ao pedido</button>
         </div>
 
-        <div class="package-includes" data-reveal>
-          <div class="package-includes-head">
-            <p class="package-includes-title">O que está incluso na sessão:</p>
-            <span class="package-includes-badge mono">4 frentes completas</span>
+        <div class="package-composition" data-reveal>
+          <p class="package-composition-title mono">Serviços Inclusos no Setup</p>
+          <div class="package-tags">
+            <span class="package-tag">Latência &amp; FPS</span>
+            <span class="package-tag-plus" aria-hidden="true">+</span>
+            <span class="package-tag">Limpeza &amp; Debloat</span>
+            <span class="package-tag-plus" aria-hidden="true">+</span>
+            <span class="package-tag">Calibração de Rede</span>
+            <span class="package-tag-plus" aria-hidden="true">+</span>
+            <span class="package-tag">Formatação Limpa</span>
           </div>
-          <ul class="package-list" role="list">
-            <li>
-              <div class="package-item-main">
-                <span class="package-item-name">FPS &amp; Input Lag</span>
-                <span class="package-item-detail">Timer Resolution, latência DPC e GPU debloat</span>
-              </div>
-              <span class="package-item-price num">R$&nbsp;37,50</span>
-            </li>
-            <li>
-              <div class="package-item-main">
-                <span class="package-item-name">Limpeza do Windows</span>
-                <span class="package-item-detail">Desativação de telemetria e serviços inúteis</span>
-              </div>
-              <span class="package-item-price num">R$&nbsp;10,00</span>
-            </li>
-            <li>
-              <div class="package-item-main">
-                <span class="package-item-name">Otimização de Internet</span>
-                <span class="package-item-detail">Ajustes TCP, MTU e rotas de baixa latência</span>
-              </div>
-              <span class="package-item-price num">R$&nbsp;7,00</span>
-            </li>
-            <li>
-              <div class="package-item-main">
-                <span class="package-item-name">Formatação Limpa</span>
-                <span class="package-item-detail">Instalação pura com drivers calibrados</span>
-              </div>
-              <span class="package-item-price num">R$&nbsp;7,00</span>
-            </li>
-          </ul>
-          <p class="package-note">Contratados separadamente, esses 4 serviços somam R$&nbsp;61,50. O ajuste fino de BIOS é o único item não incluído (adicional de R$&nbsp;45,00).</p>
+          <p class="package-note">Contratados avulsos, somam R$&nbsp;61,50. A calibração de BIOS é o único item contratado à parte (+R$&nbsp;45,00).</p>
         </div>
       </div>
     </section>

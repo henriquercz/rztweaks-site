@@ -1843,12 +1843,13 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 }
 
 /* ===== 40-services ===== */
-/* 40-services — tabela editorial: contexto fixo à esquerda, serviços em linhas à direita. */
+/* 40-services — apresentação de ofertas e preços com foco editorial limpo. */
 
 .services {
   background: var(--bg);
   color: var(--text);
   border-top: 1px solid var(--line);
+  padding-block: var(--section-y);
 }
 
 .services-grid {
@@ -1874,15 +1875,15 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 }
 
 .services-intro {
-  max-width: 30ch;
+  max-width: 32ch;
   margin-top: clamp(20px, 2.4vw, 28px);
   color: var(--text-2);
-  font-size: clamp(1.125rem, 1vw + 0.75rem, 1.375rem);
-  line-height: 1.32;
+  font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
+  line-height: 1.45;
 }
 
 .services-builder {
-  margin-top: clamp(32px, 4vw, 56px);
+  margin-top: clamp(32px, 4vw, 48px);
   padding-left: clamp(16px, 1.6vw, 22px);
   border-left: 2px solid var(--accent);
 }
@@ -1897,42 +1898,15 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 
 .services-builder-text {
   max-width: 32ch;
-  margin-top: 10px;
+  margin-top: 8px;
   color: var(--text-2);
   font-size: 0.9375rem;
-  line-height: 1.5;
-}
-
-.services-builder-text + .services-builder-text {
-  margin-top: 6px;
-}
-
-.services-guarantee {
-  margin-top: clamp(20px, 2.4vw, 32px);
-  padding: 14px 16px;
-  border-left: 2px solid var(--line-strong);
-  background: var(--surface);
-}
-
-.services-guarantee-label {
-  font-size: 0.6875rem;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.services-guarantee-text {
-  max-width: 32ch;
-  margin-top: 6px;
-  color: var(--text-2);
-  font-size: 0.8125rem;
   line-height: 1.45;
 }
 
 .services-package-note {
   max-width: 32ch;
-  margin-top: clamp(28px, 3.4vw, 44px);
+  margin-top: clamp(28px, 3.4vw, 40px);
   padding-top: clamp(16px, 1.8vw, 22px);
   border-top: 1px solid var(--line);
   color: var(--muted);
@@ -1943,7 +1917,7 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   font-weight: 600;
 }
 
-/* Lista: linhas de dados, sem card e sem fio entre cada serviço. */
+/* Lista principal de serviços: foco em nome, valor e ação rápida. */
 .services-main {
   grid-column: 6 / -1;
   min-width: 0;
@@ -1951,9 +1925,9 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 
 .service-list-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 96px 150px;
-  column-gap: 20px;
-  padding: 0 20px 12px 30px;
+  grid-template-columns: minmax(0, 1fr) 110px 150px;
+  column-gap: 24px;
+  padding: 0 20px 12px 24px;
   border-bottom: 1px solid var(--line);
   font-size: 0.75rem;
   line-height: 1;
@@ -1977,13 +1951,17 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 
 .service {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 96px 150px;
-  column-gap: 20px;
+  grid-template-columns: minmax(0, 1fr) 110px 150px;
+  column-gap: 24px;
   align-items: center;
-  padding: clamp(22px, 2.2vw, 28px) 20px clamp(22px, 2.2vw, 28px) 28px;
+  padding: clamp(20px, 2vw, 26px) 20px clamp(20px, 2vw, 26px) 24px;
   border-left: 2px solid transparent;
   background: transparent;
   transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.service + .service {
+  border-top: 1px solid var(--line);
 }
 
 .service:hover {
@@ -1995,33 +1973,41 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   border-left-color: var(--accent);
 }
 
+.service-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
 .service-name {
-  grid-column: 1;
-  grid-row: 1;
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 1.6rem + 0.55vw, 2rem);
-  line-height: 1;
+  font-size: clamp(1.5rem, 1.3rem + 0.4vw, 1.875rem);
+  line-height: 1.1;
   letter-spacing: -0.035em;
   font-weight: 700;
   font-stretch: 102%;
-  text-wrap: balance;
+}
+
+.service-desc {
+  max-width: 52ch;
+  color: var(--text-2);
+  font-size: 0.875rem;
+  line-height: 1.45;
 }
 
 .service-price {
-  grid-column: 2;
-  grid-row: 1;
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   line-height: 1;
   letter-spacing: -0.02em;
-  font-weight: 600;
+  font-weight: 700;
   text-align: right;
   color: var(--text);
+  white-space: nowrap;
 }
 
-/* Controle de texto: o JS troca o textContent e o aria-pressed. */
+/* Botão de seleção. */
 .service-add {
-  grid-column: 3;
-  grid-row: 1;
   justify-self: end;
   min-width: 150px;
   min-height: 44px;
@@ -2068,56 +2054,10 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   cursor: not-allowed;
 }
 
-.service-desc {
-  grid-column: 1 / span 2;
-  grid-row: 2;
-  max-width: 54ch;
-  margin-top: 10px;
-  color: var(--text-2);
-  font-size: var(--t-body);
-  line-height: 1.5;
-}
-
-.service-includes {
-  grid-column: 1 / -1;
-  grid-row: 3;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 24px;
-  margin: 14px 0 0;
-  padding-top: 14px;
-  border-top: 1px dashed var(--line);
-  list-style: none;
-}
-
-.service-includes li {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  font-size: 0.8125rem;
-  line-height: 1.4;
-  color: var(--text-2);
-}
-
-.service-includes li::before {
-  content: "";
-  width: 4px;
-  height: 4px;
-  margin-top: 0.45em;
-  flex: none;
-  background: var(--accent);
-}
-
-/* BIOS é o serviço sensível: entra depois de uma linha, não no mesmo bloco. */
-.service-bios {
-  margin-top: 8px;
-  border-top: 1px solid var(--line);
-}
-
 .services-note {
   max-width: 54ch;
-  margin: clamp(28px, 3vw, 40px) 0 0;
-  padding-left: 30px;
+  margin: clamp(24px, 2.8vw, 36px) 0 0;
+  padding-left: 24px;
   color: var(--muted);
 }
 
@@ -2129,66 +2069,42 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   .services-aside {
     position: static;
     max-width: 620px;
-    margin-bottom: clamp(40px, 6vw, 64px);
+    margin-bottom: clamp(36px, 5vw, 56px);
   }
 
   .services-title {
-    font-size: clamp(2.5rem, 4.2vw, 3.5rem);
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
   }
 
   .services-intro {
     max-width: 52ch;
   }
+}
 
-  .services-builder {
-    max-width: 520px;
-  }
-
-  .services-package-note {
-    max-width: 52ch;
-  }
-
+@media (max-width: 768px) {
   .service-list-head {
     display: none;
   }
 
   .service {
     grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: 20px;
-    padding: clamp(22px, 4vw, 28px) 20px;
+    row-gap: 14px;
+    padding: 18px 14px;
   }
 
-  .service-name {
+  .service-info {
     grid-column: 1 / -1;
-    grid-row: 1;
-    font-size: clamp(1.75rem, 1.3rem + 1vw, 2rem);
-  }
-
-  .service-desc {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    max-width: 56ch;
-    margin-top: 10px;
   }
 
   .service-price {
     grid-column: 1;
-    grid-row: 3;
-    margin-top: 16px;
     text-align: left;
+    font-size: 1.5rem;
   }
 
   .service-add {
     grid-column: 2;
-    grid-row: 3;
-    margin-top: 16px;
     justify-self: end;
-  }
-
-  .service-includes {
-    grid-column: 1 / -1;
-    grid-row: 4;
-    margin-top: 12px;
   }
 
   .services-note {
@@ -2196,31 +2112,22 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   }
 }
 
-@media (max-width: 640px) {
-  .service-includes {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-}
-
 /* ===== 50-package ===== */
-/* 50-package — bloco de conversão: campo vermelho, preço como objeto. */
+/* 50-package — bloco de oferta principal: apresentação de alto impacto do setup completo. */
 
 .package {
   position: relative;
   isolation: isolate;
   display: block;
   min-height: 0;
-  align-content: normal;
   overflow: hidden;
   padding-block: clamp(72px, 8vw, 112px);
-  /* Fallback --accent-2 mantém AA (5.78:1). O mix final fica em 4.53:1. */
   background: var(--accent-2);
   background: color-mix(in srgb, var(--accent) 88%, var(--accent-2));
   color: var(--black);
 }
 
-/* Marca d'água: screen remove o fundo preto e deixa só o RZ mais claro. */
+/* Marca d'água de fundo. */
 .package-mark {
   position: absolute;
   z-index: 0;
@@ -2242,18 +2149,18 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   align-items: start;
 }
 
+/* Cabeçalho da oferta. */
 .package-head {
-  grid-column: 1 / 8;
-  grid-row: 1;
+  grid-column: 1 / -1;
+  max-width: 68ch;
 }
 
 .package-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: clamp(12px, 1.6vw, 18px);
-  padding: 5px 10px;
-  border: 1.5px solid var(--black);
+  margin-bottom: clamp(14px, 1.8vw, 20px);
+  padding: 6px 12px;
   background: var(--black);
   color: var(--accent-2);
   font-size: 0.6875rem;
@@ -2269,42 +2176,28 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
 }
 
 .package-title {
-  font-size: clamp(2.25rem, 1.2rem + 3.2vw, 4rem);
+  font-size: clamp(2.4rem, 1.5rem + 3.4vw, 4.25rem);
   line-height: 0.94;
   letter-spacing: -0.055em;
-}
-
-.package-intro-col {
-  grid-column: 8 / -1;
-  grid-row: 1;
-  min-width: 0;
+  color: var(--black);
 }
 
 .package-lead {
-  max-width: 38ch;
-  padding-top: 0.12em;
-  font-size: clamp(1.125rem, 1rem + 0.55vw, 1.5rem);
-  line-height: 1.35;
-  letter-spacing: -0.02em;
+  max-width: 52ch;
+  margin-top: clamp(14px, 1.8vw, 20px);
+  font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.375rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
   font-weight: 500;
   text-wrap: pretty;
+  color: var(--black);
 }
 
-.package-specs-summary {
-  margin-top: 14px;
-  font-size: 0.6875rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-weight: 600;
-  opacity: 0.85;
-}
-
-/* Coluna de compra: preço, selo, nota e ação. */
+/* Bloco de compra: preço em destaque e botão de ação. */
 .package-buy {
-  grid-column: 1 / 8;
-  grid-row: 2;
+  grid-column: 1 / 7;
   min-width: 0;
-  margin-top: clamp(40px, 5vw, 64px);
+  margin-top: clamp(36px, 4.5vw, 56px);
 }
 
 .package-price-row {
@@ -2312,24 +2205,25 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: flex-start;
-  gap: 14px 24px;
+  gap: 16px 24px;
 }
 
 .package-price {
   display: flex;
   align-items: flex-start;
-  margin-top: 0;
-  padding-right: 0.06em;
-  font-size: clamp(5.25rem, 13.5vw, 12.5rem);
+  margin: 0;
+  padding-right: 0.04em;
+  font-size: clamp(5.25rem, 13vw, 11rem);
   font-stretch: 108%;
   line-height: 0.78;
   letter-spacing: -0.065em;
   white-space: nowrap;
+  color: var(--black);
 }
 
 .package-currency {
   padding-top: 0.14em;
-  font-size: 0.24em;
+  font-size: 0.25em;
   line-height: 1;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -2343,16 +2237,15 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3px;
-  margin-bottom: 0.2em;
+  gap: 6px;
+  margin-bottom: 0.25em;
 }
 
 .package-anchor-old {
-  margin: 0;
-  font-size: 0.8125rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: line-through;
-  opacity: 0.72;
+  opacity: 0.65;
   line-height: 1;
 }
 
@@ -2360,40 +2253,34 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   display: inline-flex;
   align-items: baseline;
   gap: 0.35em;
-  padding: 8px 12px 9px;
-  border: 1.5px solid currentColor;
-  font-size: 0.875rem;
+  padding: 6px 12px;
+  background: var(--black);
+  color: var(--accent-2);
+  font-size: 0.75rem;
   line-height: 1;
-  letter-spacing: 0.005em;
-  white-space: nowrap;
-}
-
-.package-save-label {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   font-weight: 600;
-}
-
-.package-save-value {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  word-spacing: -0.16em;
+  white-space: nowrap;
 }
 
 .package-price-note {
   margin-top: 10px;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   line-height: 1.4;
   font-weight: 500;
+  color: var(--black);
 }
 
 .package .package-add {
-  min-width: 320px;
-  min-height: 60px;
-  margin-top: clamp(28px, 3.4vw, 40px);
+  min-width: 300px;
+  min-height: 56px;
+  margin-top: clamp(24px, 3vw, 36px);
   padding-inline: 28px;
   background: var(--black);
   color: var(--text);
   font-size: 0.9375rem;
+  font-weight: 600;
   white-space: nowrap;
 }
 
@@ -2406,7 +2293,6 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   transform: translateY(1px);
 }
 
-/* Foco: o vermelho do outline padrão desaparece neste campo. */
 .package :focus-visible {
   outline-color: var(--black);
 }
@@ -2415,190 +2301,108 @@ h1, h2, h3, h4 { text-wrap: balance; font-weight: 800; }
   outline-color: var(--text);
 }
 
-/* Lista: recibo dos quatro serviços, com preço individual. */
-.package-includes {
+/* Composição visual do pacote: fita de ofertas combinadas. */
+.package-composition {
   grid-column: 8 / -1;
-  grid-row: 2;
   min-width: 0;
-  padding-top: clamp(32px, 4vw, 48px);
+  margin-top: clamp(36px, 4.5vw, 56px);
+  padding-top: clamp(8px, 1vw, 16px);
 }
 
-.package-includes-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.package-includes-title {
-  font-size: 0.9375rem;
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-
-.package-includes-badge {
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  opacity: 0.75;
-}
-
-.package-list {
-  margin: clamp(14px, 1.6vw, 20px) 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid color-mix(in srgb, var(--black) 28%, transparent);
-}
-
-.package-list li {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  padding-block: clamp(12px, 1.4vw, 16px);
-}
-
-.package-list li + li {
-  border-top: 1px solid color-mix(in srgb, var(--black) 22%, transparent);
-}
-
-.package-list li::before {
-  content: "";
-  align-self: flex-start;
-  margin-top: 0.45em;
-  width: 5px;
-  height: 5px;
-  flex: none;
-  background: currentColor;
-}
-
-.package-item-main {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.package-item-name {
-  font-size: 1.0625rem;
-  line-height: 1.3;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.package-item-detail {
+.package-composition-title {
   font-size: 0.75rem;
-  line-height: 1.35;
-  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--black);
   opacity: 0.8;
 }
 
-.package-item-price {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: 0.9375rem;
-  line-height: 1.2;
-  font-weight: 400;
+.package-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 14px;
+}
+
+.package-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  background: var(--black);
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
-  word-spacing: -0.16em;
   white-space: nowrap;
 }
 
+.package-tag-plus {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--black);
+  opacity: 0.6;
+}
+
 .package-note {
-  margin-top: clamp(18px, 2vw, 24px);
+  margin-top: clamp(20px, 2.4vw, 32px);
   padding-top: clamp(14px, 1.6vw, 18px);
-  border-top: 1px solid color-mix(in srgb, var(--black) 28%, transparent);
-  font-size: 0.875rem;
-  line-height: 1.5;
+  border-top: 1.5px solid color-mix(in srgb, var(--black) 24%, transparent);
+  font-size: 0.8125rem;
+  line-height: 1.45;
   font-weight: 500;
-  text-wrap: pretty;
+  color: var(--black);
 }
 
 @media (max-width: 1024px) {
-  .package-grid {
-    display: block;
-  }
-
-  .package-intro-col {
-    margin-top: 18px;
-  }
-
-  .package-lead {
-    max-width: 48ch;
-    padding-top: 0;
-  }
-
   .package-buy {
-    margin-top: clamp(36px, 5vw, 56px);
+    grid-column: 1 / -1;
   }
 
-  .package-includes {
-    margin-top: clamp(32px, 4vw, 44px);
-    padding-top: 0;
+  .package-composition {
+    grid-column: 1 / -1;
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1.5px solid color-mix(in srgb, var(--black) 24%, transparent);
   }
 
   .package .package-add {
     width: 100%;
-    max-width: 420px;
+    max-width: 380px;
   }
 }
 
 @media (max-width: 640px) {
   .package {
-    padding-block: 64px 72px;
+    padding-block: 56px 64px;
   }
 
   .package-title {
-    font-size: 2rem;
+    font-size: clamp(2rem, 9vw, 2.6rem);
   }
 
   .package-lead {
-    font-size: 1.125rem;
+    font-size: 1rem;
+    margin-top: 12px;
   }
 
   .package-price {
-    font-size: clamp(5.25rem, 22vw, 7rem);
+    font-size: clamp(4.5rem, 20vw, 6.5rem);
   }
 
   .package-price-row {
-    gap: 16px 28px;
-  }
-
-  .package-save {
-    padding: 8px 10px 9px;
-    font-size: 0.8125rem;
-  }
-
-  .package-price-note {
-    font-size: 0.875rem;
+    gap: 12px 20px;
   }
 
   .package .package-add {
     min-width: 0;
-    min-height: 56px;
-    padding-inline: 20px;
+    max-width: 100%;
   }
 
-  .package-item-name {
-    font-size: 1rem;
-  }
-
-  .package-item-price {
-    font-size: 0.875rem;
-  }
-
-  .package-mark {
-    left: -80px;
-    bottom: -100px;
-    width: 220px;
-    opacity: 0.14;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .package .package-add:hover {
-    transform: none;
+  .package-tag {
+    font-size: 0.8125rem;
+    padding: 6px 12px;
   }
 }
 

@@ -1,9 +1,10 @@
-/* 40-services — tabela editorial: contexto fixo à esquerda, serviços em linhas à direita. */
+/* 40-services — apresentação de ofertas e preços com foco editorial limpo. */
 
 .services {
   background: var(--bg);
   color: var(--text);
   border-top: 1px solid var(--line);
+  padding-block: var(--section-y);
 }
 
 .services-grid {
@@ -29,15 +30,15 @@
 }
 
 .services-intro {
-  max-width: 30ch;
+  max-width: 32ch;
   margin-top: clamp(20px, 2.4vw, 28px);
   color: var(--text-2);
-  font-size: clamp(1.125rem, 1vw + 0.75rem, 1.375rem);
-  line-height: 1.32;
+  font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
+  line-height: 1.45;
 }
 
 .services-builder {
-  margin-top: clamp(32px, 4vw, 56px);
+  margin-top: clamp(32px, 4vw, 48px);
   padding-left: clamp(16px, 1.6vw, 22px);
   border-left: 2px solid var(--accent);
 }
@@ -52,42 +53,15 @@
 
 .services-builder-text {
   max-width: 32ch;
-  margin-top: 10px;
+  margin-top: 8px;
   color: var(--text-2);
   font-size: 0.9375rem;
-  line-height: 1.5;
-}
-
-.services-builder-text + .services-builder-text {
-  margin-top: 6px;
-}
-
-.services-guarantee {
-  margin-top: clamp(20px, 2.4vw, 32px);
-  padding: 14px 16px;
-  border-left: 2px solid var(--line-strong);
-  background: var(--surface);
-}
-
-.services-guarantee-label {
-  font-size: 0.6875rem;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.services-guarantee-text {
-  max-width: 32ch;
-  margin-top: 6px;
-  color: var(--text-2);
-  font-size: 0.8125rem;
   line-height: 1.45;
 }
 
 .services-package-note {
   max-width: 32ch;
-  margin-top: clamp(28px, 3.4vw, 44px);
+  margin-top: clamp(28px, 3.4vw, 40px);
   padding-top: clamp(16px, 1.8vw, 22px);
   border-top: 1px solid var(--line);
   color: var(--muted);
@@ -98,7 +72,7 @@
   font-weight: 600;
 }
 
-/* Lista: linhas de dados, sem card e sem fio entre cada serviço. */
+/* Lista principal de serviços: foco em nome, valor e ação rápida. */
 .services-main {
   grid-column: 6 / -1;
   min-width: 0;
@@ -106,9 +80,9 @@
 
 .service-list-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 96px 150px;
-  column-gap: 20px;
-  padding: 0 20px 12px 30px;
+  grid-template-columns: minmax(0, 1fr) 110px 150px;
+  column-gap: 24px;
+  padding: 0 20px 12px 24px;
   border-bottom: 1px solid var(--line);
   font-size: 0.75rem;
   line-height: 1;
@@ -132,13 +106,17 @@
 
 .service {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 96px 150px;
-  column-gap: 20px;
+  grid-template-columns: minmax(0, 1fr) 110px 150px;
+  column-gap: 24px;
   align-items: center;
-  padding: clamp(22px, 2.2vw, 28px) 20px clamp(22px, 2.2vw, 28px) 28px;
+  padding: clamp(20px, 2vw, 26px) 20px clamp(20px, 2vw, 26px) 24px;
   border-left: 2px solid transparent;
   background: transparent;
   transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.service + .service {
+  border-top: 1px solid var(--line);
 }
 
 .service:hover {
@@ -150,33 +128,41 @@
   border-left-color: var(--accent);
 }
 
+.service-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
 .service-name {
-  grid-column: 1;
-  grid-row: 1;
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 1.6rem + 0.55vw, 2rem);
-  line-height: 1;
+  font-size: clamp(1.5rem, 1.3rem + 0.4vw, 1.875rem);
+  line-height: 1.1;
   letter-spacing: -0.035em;
   font-weight: 700;
   font-stretch: 102%;
-  text-wrap: balance;
+}
+
+.service-desc {
+  max-width: 52ch;
+  color: var(--text-2);
+  font-size: 0.875rem;
+  line-height: 1.45;
 }
 
 .service-price {
-  grid-column: 2;
-  grid-row: 1;
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   line-height: 1;
   letter-spacing: -0.02em;
-  font-weight: 600;
+  font-weight: 700;
   text-align: right;
   color: var(--text);
+  white-space: nowrap;
 }
 
-/* Controle de texto: o JS troca o textContent e o aria-pressed. */
+/* Botão de seleção. */
 .service-add {
-  grid-column: 3;
-  grid-row: 1;
   justify-self: end;
   min-width: 150px;
   min-height: 44px;
@@ -223,56 +209,10 @@
   cursor: not-allowed;
 }
 
-.service-desc {
-  grid-column: 1 / span 2;
-  grid-row: 2;
-  max-width: 54ch;
-  margin-top: 10px;
-  color: var(--text-2);
-  font-size: var(--t-body);
-  line-height: 1.5;
-}
-
-.service-includes {
-  grid-column: 1 / -1;
-  grid-row: 3;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 24px;
-  margin: 14px 0 0;
-  padding-top: 14px;
-  border-top: 1px dashed var(--line);
-  list-style: none;
-}
-
-.service-includes li {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  font-size: 0.8125rem;
-  line-height: 1.4;
-  color: var(--text-2);
-}
-
-.service-includes li::before {
-  content: "";
-  width: 4px;
-  height: 4px;
-  margin-top: 0.45em;
-  flex: none;
-  background: var(--accent);
-}
-
-/* BIOS é o serviço sensível: entra depois de uma linha, não no mesmo bloco. */
-.service-bios {
-  margin-top: 8px;
-  border-top: 1px solid var(--line);
-}
-
 .services-note {
   max-width: 54ch;
-  margin: clamp(28px, 3vw, 40px) 0 0;
-  padding-left: 30px;
+  margin: clamp(24px, 2.8vw, 36px) 0 0;
+  padding-left: 24px;
   color: var(--muted);
 }
 
@@ -284,76 +224,45 @@
   .services-aside {
     position: static;
     max-width: 620px;
-    margin-bottom: clamp(40px, 6vw, 64px);
+    margin-bottom: clamp(36px, 5vw, 56px);
   }
 
   .services-title {
-    font-size: clamp(2.5rem, 4.2vw, 3.5rem);
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
   }
 
   .services-intro {
     max-width: 52ch;
   }
+}
 
-  .services-builder {
-    max-width: 520px;
-  }
-
-  .services-package-note {
-    max-width: 52ch;
-  }
-
+@media (max-width: 768px) {
   .service-list-head {
     display: none;
   }
 
   .service {
     grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: 20px;
-    padding: clamp(22px, 4vw, 28px) 20px;
+    row-gap: 14px;
+    padding: 18px 14px;
   }
 
-  .service-name {
+  .service-info {
     grid-column: 1 / -1;
-    grid-row: 1;
-    font-size: clamp(1.75rem, 1.3rem + 1vw, 2rem);
-  }
-
-  .service-desc {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    max-width: 56ch;
-    margin-top: 10px;
   }
 
   .service-price {
     grid-column: 1;
-    grid-row: 3;
-    margin-top: 16px;
     text-align: left;
+    font-size: 1.5rem;
   }
 
   .service-add {
     grid-column: 2;
-    grid-row: 3;
-    margin-top: 16px;
     justify-self: end;
-  }
-
-  .service-includes {
-    grid-column: 1 / -1;
-    grid-row: 4;
-    margin-top: 12px;
   }
 
   .services-note {
     padding-left: 0;
-  }
-}
-
-@media (max-width: 640px) {
-  .service-includes {
-    grid-template-columns: 1fr;
-    gap: 8px;
   }
 }
