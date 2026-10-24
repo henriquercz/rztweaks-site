@@ -1,14 +1,79 @@
-<section class="section field-paper problem" aria-labelledby="problem-title">
+    <section class="section field-alt problem" aria-labelledby="problem-title">
       <div class="wrap">
-        <div class="problem-column">
-          <h2 class="problem-title" id="problem-title" data-reveal>O gargalo é configuração.</h2>
-          <div class="problem-body" data-reveal>
-            <p class="problem-lead">Windows chega configurado para atualizar, sincronizar e indexar em segundo plano. O jogo disputa CPU, GPU, disco e rede com esses processos.</p>
-            <p>FPS que cai na partida, stutter, mouse pesado, ping instável, boot lento. Sintomas diferentes, quase sempre a mesma origem: ajuste padrão e processo sobrando.</p>
-            <p>A otimização revisa serviços, inicialização, energia, GPU e rede. O que sobe junto com o Windows, o que roda por trás e o que ficou no padrão de fábrica.</p>
-            <p>Tudo à distância, pelo Discord. O antes e o depois são medidos, e o que mudou fica registrado.</p>
+        <div class="problem-head" data-stagger>
+          <h2 class="head problem-title" id="problem-title" data-reveal>
+            O gargalo não é o seu PC.<br>
+            <span class="problem-title-accent">É a configuração.</span>
+          </h2>
+
+          <div class="problem-intro" data-reveal>
+            <p class="lead problem-lead">Windows atualiza, sincroniza e indexa em segundo plano. O jogo disputa CPU, GPU, disco e rede.</p>
+            <p class="small problem-note">Antes e depois medidos e registrados.</p>
+          </div>
+        </div>
+
+        <div class="problem-symptoms" data-stagger>
+          <article class="symptom" data-reveal>
+            <div class="symptom-head">
+              <h3 class="symptom-title">FPS instável</h3>
+              <span class="symptom-tag mono">1% low</span>
+            </div>
+            <p class="symptom-text">A média alta esconde as quedas. O 1% low é o que você sente.</p>
+          </article>
+
+          <article class="symptom" data-reveal>
+            <div class="symptom-head">
+              <h3 class="symptom-title">Stutter</h3>
+              <span class="symptom-tag mono">frame time</span>
+            </div>
+            <p class="symptom-text">O frame time abre picos. A imagem trava por um instante e o movimento quebra.</p>
+          </article>
+
+          <article class="symptom" data-reveal>
+            <div class="symptom-head">
+              <h3 class="symptom-title">Input lag</h3>
+              <span class="symptom-tag mono">clique</span>
+            </div>
+            <p class="symptom-text">O clique chega depois do que você viu. O movimento não acompanha a mão.</p>
+          </article>
+
+          <article class="symptom" data-reveal>
+            <div class="symptom-head">
+              <h3 class="symptom-title">Ping</h3>
+              <span class="symptom-tag mono">RTT</span>
+            </div>
+            <p class="symptom-text">A latência sobe e oscila. O tiro sai depois do que estava na tela.</p>
+          </article>
+        </div>
+
+        <div class="problem-band">
+          <div class="problem-band-head" data-reveal>
+            <h3 class="problem-band-title">O que a otimização revisa</h3>
             <a class="link problem-link" href="#servicos">Ver os serviços</a>
           </div>
+
+          <ul class="problem-checks" data-stagger>
+            <li data-reveal>
+              <span class="check-name">Serviços</span>
+              <span class="check-text">Processos que sobem sem uso.</span>
+            </li>
+            <li data-reveal>
+              <span class="check-name">Inicialização</span>
+              <span class="check-text">O que abre junto com o Windows.</span>
+            </li>
+            <li data-reveal>
+              <span class="check-name">Energia</span>
+              <span class="check-text">Plano de desempenho e suspensão.</span>
+            </li>
+            <li data-reveal>
+              <span class="check-name">GPU</span>
+              <span class="check-text">Driver, buffer e ajuste por jogo.</span>
+            </li>
+            <li data-reveal>
+              <span class="check-name">Rede</span>
+              <span class="check-text">DNS, buffer e prioridade de tráfego.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
