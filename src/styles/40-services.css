@@ -62,6 +62,29 @@
   margin-top: 6px;
 }
 
+.services-guarantee {
+  margin-top: clamp(20px, 2.4vw, 32px);
+  padding: 14px 16px;
+  border-left: 2px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.services-guarantee-label {
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.services-guarantee-text {
+  max-width: 32ch;
+  margin-top: 6px;
+  color: var(--text-2);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
 .services-package-note {
   max-width: 32ch;
   margin-top: clamp(28px, 3.4vw, 44px);
@@ -213,27 +236,31 @@
 .service-includes {
   grid-column: 1 / -1;
   grid-row: 3;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  margin: 8px 0 0;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 24px;
+  margin: 14px 0 0;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
   list-style: none;
-  color: var(--muted);
 }
 
 .service-includes li {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  align-items: baseline;
   gap: 8px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--text-2);
 }
 
 .service-includes li::before {
   content: "";
   width: 4px;
   height: 4px;
+  margin-top: 0.45em;
   flex: none;
-  background: var(--line-strong);
+  background: var(--accent);
 }
 
 /* BIOS é o serviço sensível: entra depois de uma linha, não no mesmo bloco. */
@@ -321,5 +348,12 @@
 
   .services-note {
     padding-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-includes {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 }
