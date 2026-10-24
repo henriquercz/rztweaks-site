@@ -1,27 +1,49 @@
 <div class="order-bar" id="orderBar" hidden aria-live="polite">
-    <p class="order-summary"><span id="orderCount">0 serviços</span> · <strong id="orderTotal">R$ 0,00</strong></p>
+  <div class="order-bar-inner">
+    <div class="order-summary">
+      <span class="order-mark" aria-hidden="true"></span>
+      <span class="order-label mono">Pedido</span>
+      <span class="order-count" id="orderCount">0 serviços</span>
+      <span class="order-divider" aria-hidden="true"></span>
+      <strong class="order-total num" id="orderTotal">R$ 0,00</strong>
+    </div>
     <div class="order-actions">
       <button class="order-clear" id="orderClear" type="button">Limpar</button>
-      <a class="btn btn-primary" id="copyOrder" href="https://discord.gg/ugcU6gtnnj" target="_blank" rel="noopener noreferrer">Copiar pedido e abrir Discord</a>
+      <a class="btn order-copy" id="copyOrder" href="https://discord.gg/ugcU6gtnnj" target="_blank" rel="noopener noreferrer">Copiar pedido e abrir Discord</a>
     </div>
   </div>
+</div>
 
-  <dialog class="lightbox" id="lightbox" aria-labelledby="lightboxCaption">
-    <div class="lightbox-bar">
-      <p id="lightboxCaption">Print de feedback</p>
-      <button class="lightbox-close" id="lightboxClose" type="button">Fechar</button>
+<dialog class="lightbox" id="lightbox" aria-labelledby="lightboxCaption">
+  <div class="lightbox-bar">
+    <div class="lightbox-heading">
+      <span class="lightbox-kicker mono" aria-hidden="true">Print</span>
+      <p class="lightbox-caption" id="lightboxCaption">Print de feedback</p>
     </div>
-    <div class="lightbox-stage">
-      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button" aria-label="Print anterior">←</button>
-      <img id="lightboxImage" src="" alt="">
-      <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Próximo print">→</button>
-    </div>
-  </dialog>
-
-  <div class="order-fallback" id="orderFallback" hidden>
-    <div class="order-fallback-inner">
-      <p>Copie o pedido abaixo e cole no Discord.</p>
-      <textarea id="orderText" rows="6" readonly></textarea>
-      <button class="btn btn-primary" id="orderFallbackClose" type="button">Fechar</button>
+    <div class="lightbox-tools">
+      <span class="lightbox-hint mono" aria-hidden="true">← →</span>
+      <button class="lightbox-close" id="lightboxClose" type="button" autofocus>Fechar</button>
     </div>
   </div>
+  <div class="lightbox-stage">
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button" aria-label="Print anterior">←</button>
+    <img id="lightboxImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="1200" height="800" decoding="async">
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Próximo print">→</button>
+  </div>
+</dialog>
+
+<div class="order-fallback" id="orderFallback" hidden>
+  <div class="order-fallback-inner" role="dialog" aria-labelledby="orderFallbackTitle">
+    <div class="order-fallback-head">
+      <p class="order-fallback-kicker mono">Cópia manual</p>
+      <h2 class="order-fallback-title" id="orderFallbackTitle">Copie o pedido</h2>
+    </div>
+    <p class="order-fallback-text">Não foi possível copiar automaticamente. O texto abaixo já está selecionado.</p>
+    <label class="sr-only" for="orderText">Pedido para copiar</label>
+    <textarea id="orderText" rows="6" readonly></textarea>
+    <div class="order-fallback-foot">
+      <p class="order-fallback-note small">Cole no Discord e envie.</p>
+      <button class="btn btn-ghost order-fallback-close" id="orderFallbackClose" type="button">Fechar</button>
+    </div>
+  </div>
+</div>
