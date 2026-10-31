@@ -172,15 +172,16 @@
           if (!entry.isIntersecting) return;
           const el = entry.target;
           const target = Number(el.dataset.count);
+          const from = Number(el.dataset.countFrom || 0);
           const start = performance.now();
           const duration = 900;
           const tick = (now) => {
             const p = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(1 - p, 3);
-            el.textContent = String(Math.round(target * eased));
+            el.textContent = String(Math.round(from + (target - from) * eased));
             if (p < 1) requestAnimationFrame(tick);
           };
-          el.textContent = "0";
+          el.textContent = String(from);
           requestAnimationFrame(tick);
           countObserver.unobserve(el);
         });

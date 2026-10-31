@@ -1,14 +1,14 @@
-/* 10-hero — autoridade, prova concreta e telemetria de alta performance. */
+/* 10-hero — instrumento de performance: copy de resultado + telemetria de dados. */
 
 .hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(32px, 4vw, 52px) clamp(56px, 7vw, 96px);
+  padding-block: clamp(36px, 4vw, 56px) clamp(56px, 6vw, 88px);
   background: var(--bg);
 }
 
-/* Fundo com atmosfera visual sutil da marca. */
+/* Fundo: a marca como atmosfera, nunca como moldura duplicada. */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -21,17 +21,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 80% 25%;
-  opacity: 0.14;
-  filter: grayscale(100%) contrast(1.15);
+  object-position: 74% 36%;
+  opacity: 0.2;
+  transform: scale(1.04);
 }
 
 .hero-bg-overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 75% 25%, transparent 0%, var(--bg) 72%),
-    linear-gradient(180deg, var(--bg) 0%, transparent 22%, transparent 70%, var(--bg) 100%);
+    linear-gradient(90deg, var(--bg) 0%, rgba(8, 8, 10, 0.96) 34%, rgba(8, 8, 10, 0.6) 64%, rgba(8, 8, 10, 0.84) 100%), /* taste-skill-ignore: scrim neutro sobre foto */
+    linear-gradient(180deg, var(--bg) 0%, transparent 16%, transparent 72%, var(--bg) 100%); /* taste-skill-ignore: scrim neutro sobre foto */
 }
 
 .hero-grid {
@@ -44,67 +44,50 @@
 }
 
 .hero-copy {
-  grid-column: 1 / 8;
+  grid-column: 1 / 7;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-width: 0;
+  padding-top: 0;
 }
 
-/* Micro-badge de contexto técnico. */
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: clamp(16px, 2vw, 24px);
-  padding: 6px 12px;
-  border: 1px solid var(--line-strong);
-  background: var(--surface);
-  color: var(--text-2);
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.hero-badge-dot {
-  width: 6px;
-  height: 6px;
-  flex: none;
-  background: var(--accent);
-}
-
-.hero-badge-text {
-  font-weight: 500;
-}
-
+/* Título: duas linhas, máscara própria, sem linha de apoio dentro do h1. */
 .hero-title {
   display: flex;
   flex-direction: column;
-  font-size: clamp(3.2rem, 7.6vw, 6.8rem);
-  line-height: 0.9;
+  font-size: clamp(3.2rem, 7.2vw, 7rem);
+  line-height: 0.92;
   letter-spacing: -0.055em;
 }
 
 .hero-title-line {
   display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
 }
 
-.hero-title-accent {
+.hero-title-line > span {
   display: block;
-  margin-top: 0.16em;
+}
+
+.hero-promise {
+  margin-top: clamp(14px, 1.6vw, 22px);
   color: var(--accent);
-  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.75rem);
-  line-height: 1.05;
-  letter-spacing: -0.04em;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.4rem);
   font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
 }
 
 .hero-lead {
-  max-width: 44ch;
-  margin-top: clamp(20px, 2.4vw, 28px);
+  max-width: 46ch;
+  margin-top: clamp(18px, 2vw, 26px);
   color: var(--text-2);
   font-size: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .hero-actions {
@@ -112,7 +95,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 14px 28px;
-  margin-top: clamp(26px, 3vw, 36px);
+  margin-top: clamp(24px, 2.8vw, 34px);
 }
 
 .hero-cta {
@@ -122,264 +105,572 @@
 
 .hero-cta-arrow {
   flex: none;
+  transition: transform 0.2s var(--ease);
+}
+
+.hero-cta:hover .hero-cta-arrow {
+  transform: translateX(3px);
 }
 
 .hero-link {
   font-size: 0.9375rem;
 }
 
-/* Pilares de segurança e confiança comercial. */
+.hero-trust {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+/* Três resultados, sem caixa e sem moldura: espaço e marcador. */
 .hero-pillars {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(12px, 1.6vw, 20px);
+  gap: clamp(14px, 1.8vw, 24px);
   width: 100%;
-  margin: clamp(36px, 4.2vw, 52px) 0 0;
-  padding: clamp(18px, 2vw, 24px) 0 0;
-  border-top: 1px solid var(--line);
+  margin: clamp(30px, 3.4vw, 44px) 0 0;
+  padding: 0;
   list-style: none;
 }
 
 .hero-pillar {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  min-width: 0;
-}
-
-.hero-pillar-mark {
-  width: 6px;
-  height: 6px;
-  flex: none;
-  margin-top: 6px;
-  background: var(--accent);
-}
-
-.hero-pillar-content {
-  display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 6px;
   min-width: 0;
 }
 
 .hero-pillar-title {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-}
-
-.hero-pillar-desc {
-  font-size: 0.75rem;
-  color: var(--muted);
-  line-height: 1.35;
-}
-
-/* Painel: moldura de instrumento e telemetria de performance. */
-.hero-panel {
-  grid-column: 8 / 13;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  min-height: clamp(540px, 42vw, 620px);
-  border: 1px solid var(--line-strong);
-  background: var(--black);
-  overflow: hidden;
-}
-
-.hero-panel-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 44px;
-  padding: 0 16px;
-  border-bottom: 1px solid var(--line);
-  background: var(--black);
-  color: var(--text-2);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.hero-panel-label {
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
-.hero-status {
+.hero-pillar-title::before {
+  content: "";
   width: 6px;
   height: 6px;
   flex: none;
   background: var(--accent);
 }
 
-.hero-panel-count {
-  color: var(--muted);
+.hero-pillar-desc {
+  color: var(--text-2);
+  font-size: 0.8125rem;
+  line-height: 1.45;
 }
 
-.hero-screen {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
+/* Console: Instrumento em slab único; a barra vermelha é o instrumento. */
+.hero-console {
+  grid-column: 7 / 13;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  align-self: stretch;
   background: var(--black);
+  border-top: 2px solid var(--accent);
+  overflow: hidden;
 }
 
-.hero-screen img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 46%;
-}
-
-.hero-screen-tag {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 2;
-  display: inline-flex;
+.console-top {
+  display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 8px;
-  background: rgba(8, 8, 10, 0.88);
-  border: 1px solid var(--line-strong);
-  font-size: 0.625rem;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 20px;
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-family: var(--font-mono); /* taste-skill-ignore: interface data-ui */
+  font-size: 0.6875rem;
   letter-spacing: 0.08em;
+  line-height: 1;
   text-transform: uppercase;
-  color: var(--text);
 }
 
-.screen-tag-live {
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  box-shadow: 0 0 6px var(--accent);
-}
-
-/* Leitura: números tabulares, rótulos curtos, linhas de 1px. */
-.hero-readout {
+.console-mark {
+  width: 22px;
+  height: 22px;
   flex: none;
-  border-top: 1px solid var(--line-strong);
-  background: var(--surface);
+  object-fit: contain;
+}
+
+.console-title {
   color: var(--text);
-  font-family: var(--font-mono);
+  font-weight: 500;
+  white-space: nowrap;
 }
 
-.hero-reading {
-  padding: 12px 16px 14px;
+.console-meta {
+  margin-left: auto;
+  color: var(--muted);
+  white-space: nowrap;
 }
 
-.hero-reading + .hero-reading {
-  border-top: 1px solid var(--line);
+.console-main {
+  padding: clamp(18px, 2.2vw, 24px) 20px clamp(14px, 1.8vw, 18px);
 }
 
-.hero-reading-head {
+.console-main-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
-.hero-reading-meta {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  line-height: 1.3;
+.console-label {
+  color: var(--muted);
+  font-family: var(--font-mono); /* taste-skill-ignore: interface data-ui */
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
   text-transform: uppercase;
 }
 
-.hero-game {
-  color: var(--text-2);
+.console-delta {
+  padding: 4px 8px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-mono); /* taste-skill-ignore: interface data-ui */
+  font-size: 0.75rem;
   font-weight: 500;
-}
-
-.hero-player {
-  color: var(--muted);
-}
-
-.hero-tag-diff {
-  padding: 2px 6px;
-  font-size: 0.625rem;
-  font-weight: 600;
-  color: var(--accent-2);
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
   letter-spacing: 0.02em;
+  line-height: 1;
 }
 
-.hero-reading-value {
+.console-fps {
   display: flex;
   align-items: baseline;
-  gap: 10px;
-  margin-top: 4px;
-  font-size: clamp(2.4rem, 3vw, 3.25rem);
-  letter-spacing: -0.045em;
-  line-height: 1;
+  gap: clamp(8px, 1.2vw, 14px);
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 5.4vw, 5.2rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
   white-space: nowrap;
 }
 
-.hero-before {
+.console-before {
   color: var(--muted);
-  font-weight: 400;
-}
-
-.hero-reading-arrow {
-  width: 22px;
-  height: 10px;
-  flex: none;
-  align-self: center;
-  color: var(--accent);
-}
-
-.hero-after {
-  color: var(--text);
   font-weight: 500;
 }
 
-.hero-unit {
-  margin-left: 2px;
+.console-arrow {
+  align-self: center;
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 0.45em;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.console-after {
+  display: inline-block;
+  min-width: 3ch;
+  color: var(--text);
+}
+
+.console-unit {
   color: var(--muted);
-  font-size: 0.625rem;
+  font-family: var(--font-mono); /* taste-skill-ignore: interface data-ui */
+  font-size: 0.6875rem;
+  font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.hero-readout-foot {
+.console-game {
+  margin-top: 6px;
+  color: var(--text-2);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+}
+
+.console-source {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+/* Gráfico: escala fiel de dados — a linha "antes" vive de verdade entre 90 e 130. */
+.console-graph {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px 14px;
+  border-top: 1px solid var(--line); /* taste-skill-ignore: interface data-ui */
+}
+
+.console-graph-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 12px;
+}
+
+.console-legend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-family: var(--font-mono); /* taste-skill-ignore: interface data-ui */
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.console-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.console-legend i {
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: var(--muted);
+  opacity: 0.5;
+}
+
+.console-legend .legend-after {
+  background: var(--accent);
+  opacity: 1;
+}
+
+.console-graph-canvas {
+  position: relative;
+  flex: 0 0 auto;
+  height: clamp(116px, 9vw, 128px);
+  margin-top: 10px;
+}
+
+.console-graph svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.graph-zone {
+  fill: var(--muted);
+  opacity: 0.07;
+}
+
+.graph-rail {
+  fill: none;
+  stroke: var(--text-2);
+  stroke-dasharray: 2 5;
+  stroke-width: 1;
+  opacity: 0.28;
+  vector-effect: non-scaling-stroke;
+}
+
+.graph-before {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.5;
+  opacity: 0.6;
+  vector-effect: non-scaling-stroke;
+}
+
+.graph-drop {
+  fill: var(--accent-2);
+  opacity: 0.9;
+}
+
+.graph-after {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 5px rgb(255 59 67 / 0.35)); /* taste-skill-ignore: interface data-ui */
+  vector-effect: non-scaling-stroke;
+}
+
+.graph-dot {
+  fill: var(--accent);
+}
+
+.graph-gap,
+.graph-gap-cap {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1;
+  opacity: 0.7;
+  vector-effect: non-scaling-stroke;
+}
+
+.graph-gap {
+  stroke-dasharray: 3 4;
+}
+
+.graph-chip {
+  position: absolute;
+  top: 38%;
+  right: calc(11.67% + 10px);
+  transform: translateY(-50%);
+  padding: 3px 7px;
+  background: var(--black);
+  color: var(--accent);
+  font-family: var(--font-mono); /* taste-skill-ignore: interface data-ui */
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.console-note {
+  max-width: 46ch;
+  margin-top: 6px;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+/* Linhas de resultado: jogo, pacote contratado e número real. */
+.console-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.console-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 20px;
+  border-top: 1px solid var(--line); /* taste-skill-ignore: interface data-ui */
+}
+
+.console-row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.console-row-game {
+  overflow: hidden;
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.console-row-pkg {
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+.console-row-value {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.console-row-arrow {
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 0.75em;
+}
+
+.console-row-delta {
+  color: var(--accent-2);
+  font-family: var(--font-mono); /* taste-skill-ignore: interface data-ui */
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.console-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 8px 16px 9px;
-  border-top: 1px solid var(--line);
+  padding: 7px 20px;
+  background: var(--surface-2);
   color: var(--muted);
-  font-size: 0.625rem;
+  font-family: var(--font-mono); /* taste-skill-ignore: interface data-ui */
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
-  line-height: 1;
+  line-height: 1.2;
   text-transform: uppercase;
 }
 
-.hero-badge-verified {
+.console-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--text-2);
-  font-weight: 600;
 }
 
-@media (max-width: 1080px) {
-  .hero-pillars {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.console-verified::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+}
+
+/* Movimento: entrada coreografada, gráfico desenhando, fundo à deriva. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero-title-line > span {
+    transform: translateY(110%);
+    animation: hero-line 800ms var(--ease-out) forwards;
   }
 
-  .hero-pillar:last-child {
-    grid-column: 1 / -1;
+  .js .hero-title-line:nth-child(1) > span { animation-delay: 100ms; }
+  .js .hero-title-line:nth-child(2) > span { animation-delay: 200ms; }
+
+  .js .hero-promise,
+  .js .hero-lead,
+  .js .hero-actions,
+  .js .hero-trust,
+  .js .hero-pillar {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: hero-rise 600ms var(--ease-out) forwards;
+  }
+
+  .js .hero-promise { animation-delay: 300ms; }
+  .js .hero-lead { animation-delay: 380ms; }
+  .js .hero-actions { animation-delay: 460ms; }
+  .js .hero-trust { animation-delay: 520ms; }
+  .js .hero-pillar:nth-child(1) { animation-delay: 580ms; }
+  .js .hero-pillar:nth-child(2) { animation-delay: 640ms; }
+  .js .hero-pillar:nth-child(3) { animation-delay: 700ms; }
+
+  .js .hero-console {
+    opacity: 0;
+    transform: translateY(20px);
+    clip-path: inset(0 0 100% 0);
+    animation: console-in 900ms var(--ease-out) 180ms forwards;
+  }
+
+  .js .graph-before {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: graph-draw 900ms var(--ease-out) 500ms forwards;
+  }
+
+  .js .graph-after {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: graph-draw 1000ms var(--ease-out) 650ms forwards;
+  }
+
+  .js .graph-chip {
+    opacity: 0;
+    transform: translateY(-50%);
+    animation: chip-in 400ms var(--ease-out) 1500ms forwards;
+  }
+
+  .js .graph-zone {
+    opacity: 0;
+    animation: zone-in 700ms var(--ease-out) 1100ms forwards;
+  }
+
+  .js .graph-drop {
+    opacity: 0;
+    animation: dot-in 300ms var(--ease-out) 1400ms forwards;
+  }
+
+  .js .graph-dot {
+    opacity: 0;
+    animation:
+      dot-in 300ms var(--ease-out) 1600ms forwards,
+      dot-pulse 3000ms ease-in-out 1900ms infinite;
+  }
+
+  .js .hero-bg img {
+    animation: bg-drift 26s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes hero-line {
+  to { transform: none; }
+}
+
+@keyframes hero-rise {
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes console-in {
+  to { opacity: 1; transform: none; clip-path: inset(0); }
+}
+
+@keyframes graph-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes zone-in {
+  to { opacity: 0.07; }
+}
+
+@keyframes dot-in {
+  to { opacity: 1; }
+}
+
+@keyframes chip-in {
+  to { opacity: 1; }
+}
+
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.55; }
+}
+
+@keyframes bg-drift {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-title-line > span,
+  .js .hero-promise,
+  .js .hero-lead,
+  .js .hero-actions,
+  .js .hero-trust,
+  .js .hero-pillar,
+  .js .hero-console,
+  .js .console-main,
+  .js .console-graph,
+  .js .console-rows,
+  .js .console-foot,
+  .js .graph-before,
+  .js .graph-after,
+  .js .graph-dot {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .js .graph-zone {
+    opacity: 0.07;
+    animation: none;
+  }
+
+  .js .graph-drop {
+    opacity: 0.9;
+    animation: none;
   }
 }
 
@@ -390,23 +681,37 @@
   }
 
   .hero-copy,
-  .hero-panel {
+  .hero-console {
     grid-column: 1 / -1;
   }
 
-  .hero-panel {
-    min-height: 0;
+  .hero-copy {
+    padding-top: 0;
   }
 
-  .hero-screen {
-    flex: none;
-    aspect-ratio: 16 / 10;
+  .hero-title {
+    font-size: clamp(3rem, 12vw, 5.4rem);
+  }
+
+  .hero-bg img {
+    object-position: 60% 30%;
+    opacity: 0.16;
+  }
+
+  .hero-bg-overlay {
+    background:
+      linear-gradient(180deg, rgba(8, 8, 10, 0.72) 0%, var(--bg) 62%), /* taste-skill-ignore: scrim neutro sobre foto */
+      linear-gradient(90deg, var(--bg) 0%, transparent 64%); /* taste-skill-ignore: scrim neutro sobre foto */
+  }
+
+  .hero-console {
+    min-height: 0;
   }
 }
 
 @media (max-width: 640px) {
   .hero {
-    padding-block: 24px 52px;
+    padding-block: 28px 56px;
   }
 
   .hero-grid {
@@ -414,11 +719,11 @@
   }
 
   .hero-title {
-    font-size: clamp(2.6rem, 11vw, 3.6rem);
+    font-size: clamp(2.8rem, 11.5vw, 4rem);
   }
 
-  .hero-title-accent {
-    font-size: clamp(1.25rem, 5.5vw, 1.75rem);
+  .hero-promise {
+    font-size: clamp(1.35rem, 5.6vw, 1.75rem);
   }
 
   .hero-lead {
@@ -427,37 +732,58 @@
 
   .hero-actions {
     margin-top: 22px;
-    gap: 14px 20px;
+    gap: 12px 20px;
   }
 
   .hero-pillars {
     grid-template-columns: 1fr;
     gap: 14px;
     margin-top: 28px;
-    padding-top: 18px;
   }
 
   .hero-pillar:last-child {
     grid-column: auto;
   }
 
-  .hero-panel-top {
-    min-height: 40px;
-    padding-inline: 14px;
-    font-size: 0.625rem;
-  }
-
-  .hero-reading,
-  .hero-readout-foot {
+  .console-top,
+  .console-main,
+  .console-graph,
+  .console-foot {
     padding-inline: 14px;
   }
 
-  .hero-reading-value {
+  .console-row {
+    padding-inline: 14px;
+  }
+
+  .console-meta-full {
+    display: none;
+  }
+
+  .console-fps {
+    font-size: clamp(3rem, 13vw, 4.2rem);
+  }
+
+  .console-graph-canvas {
+    height: 130px;
+  }
+}
+
+@media (max-width: 400px) {
+  .console-row {
     gap: 8px;
-    font-size: 2.2rem;
   }
 
-  .hero-reading-arrow {
-    width: 18px;
+  .console-row-game {
+    font-size: 0.75rem;
+  }
+
+  .console-row-value {
+    gap: 5px;
+    font-size: 1rem;
+  }
+
+  .console-row-delta {
+    font-size: 0.75rem;
   }
 }
